@@ -66,7 +66,7 @@ const sigupController = async (req, res) => {
 const loginController = async (req, res) => {
 	try {
 		const { email, password } = req.body;
-		//validate
+		// validate
 		if (!email || !password) {
 			return res.status(404).send({
 				success: false,
@@ -74,7 +74,7 @@ const loginController = async (req, res) => {
 			});
 		}
 
-		//check user
+		// check user
 		const user = await userModel.findOne({ email });
 		if (!user) {
 			return res.status(404).send({
