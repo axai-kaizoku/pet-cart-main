@@ -1,0 +1,52 @@
+.page-not-found {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+
+.page-not-found .inner-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 35%;
+	height: 90%;
+	/* border: 1px solid black; */
+	text-align: center;
+	/* padding: 1rem; */
+}
+
+.page-not-found .inner-container .inner-container-inner {
+	padding: 0rem 2rem;
+}
+
+.page-not-found .inner-container h1 {
+	padding: 1rem 0.4rem;
+	margin: 0.2rem;
+	font-size: 6rem;
+}
+
+.page-not-found .inner-container h2 {
+	padding: 1rem 2rem;
+}
+
+.page-not-found .inner-container p {
+	padding: 2rem;
+	margin-bottom: 2rem;
+}
+
+.page-not-found .inner-container #link {
+	padding: 0.6rem 1rem;
+	border-radius: 0.2rem;
+	margin: 1rem;
+	border: 1px solid;
+}
+
+@media screen and (max-width: 550px) {
+	.page-not-found .inner-container {
+		width: 100%;
+	}
+}
