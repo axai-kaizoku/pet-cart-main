@@ -1,0 +1,12 @@
+{
+	"name": "petcart2",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "concurrently \"cd server && npm run server\" \"cd client && npm start\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

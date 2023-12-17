@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./database/index');
 const authRoutes = require('./routes/authRoute');
+const cors = require('cors');
 
 //configure dotenv
 dotenv.config();
@@ -14,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3050;
 
 // middlewares
+app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 

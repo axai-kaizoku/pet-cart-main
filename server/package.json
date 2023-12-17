@@ -4,8 +4,10 @@
 	"description": "This is an e-commerce app for your pet's needs",
 	"main": "server.js",
 	"scripts": {
-		"dev": "nodemon server.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "node server.js",
+		"server": "nodemon server.js",
+		"client": "npm start --perfix ./client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"keywords": [],
 	"author": "axai-kaizoku",
@@ -13,6 +15,8 @@
 	"dependencies": {
 		"bcrypt": "^5.1.0",
 		"colors": "^1.4.0",
+		"concurrently": "^8.2.2",
+		"cors": "^2.8.5",
 		"dotenv": "^16.0.3",
 		"express": "^4.18.2",
 		"jsonwebtoken": "^9.0.2",

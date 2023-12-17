@@ -5,22 +5,25 @@ const JWT = require('jsonwebtoken');
 
 const sigupController = async (req, res) => {
 	try {
-		const { name, email, password, phone, address } = req.body;
+		const { firstName, lastName, email, password, phone, address } = req.body;
 		// validate
-		if (!name) {
-			return res.send({ error: 'Name is required' });
+		if (!firstName) {
+			return res.send({ message: 'First Name is required' });
+		}
+		if (!lastName) {
+			return res.send({ message: 'Last Name is required' });
 		}
 		if (!email) {
-			return res.send({ error: 'Email is required' });
+			return res.send({ message: 'Email is required' });
 		}
 		if (!password) {
-			return res.send({ error: 'Password is required' });
+			return res.send({ message: 'Password is required' });
 		}
 		if (!phone) {
-			return res.send({ error: 'Phone no. is required' });
+			return res.send({ message: 'Phone no. is required' });
 		}
 		if (!address) {
-			return res.send({ error: 'Address is required' });
+			return res.send({ message: 'Address is required' });
 		}
 
 		// check user
@@ -29,7 +32,7 @@ const sigupController = async (req, res) => {
 		// user exists
 		if (existingUser) {
 			return res.status(200).send({
-				success: true,
+				success: false,
 				message: 'Account Exists! Please login',
 			});
 		}
@@ -39,7 +42,8 @@ const sigupController = async (req, res) => {
 
 		// save
 		const user = new userModel({
-			name,
+			firstName,
+			lastName,
 			email,
 			phone,
 			address,
@@ -101,7 +105,8 @@ const loginController = async (req, res) => {
 			success: true,
 			message: 'Login Successful !',
 			user: {
-				name: user.name,
+				firstName: user.firstName,
+				lastName: user.lastName,
 				email: user.email,
 				phone: user.phone,
 				address: user.address,
@@ -118,4 +123,14 @@ const loginController = async (req, res) => {
 	}
 };
 
-module.exports = { sigupController, loginController };
+// get test
+const testController = (req, res) => {
+	try {
+		res.send({ message: 'Protected Route' });
+	} catch (error) {
+		console.log({ error });
+		res.send({ error });
+	}
+};
+
+module.exports = { sigupController, loginController, testController };
