@@ -70,6 +70,7 @@ const sigupController = async (req, res) => {
 const loginController = async (req, res) => {
 	try {
 		const { email, password } = req.body;
+
 		// validate
 		if (!email || !password) {
 			return res.status(404).send({
@@ -89,7 +90,6 @@ const loginController = async (req, res) => {
 
 		//check password
 		const match = await comparePassword(password, user.password);
-
 		if (!match) {
 			return res.status(200).send({
 				success: false,

@@ -6,6 +6,8 @@ import Contact from './pages/Contact';
 import PageNotFound from './pages/PageNotFound';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import PrivateRoute from './components/Routes/Private';
+import Profile from './components/Profile';
 
 function App() {
 	return (
@@ -15,6 +17,14 @@ function App() {
 					path="/"
 					element={<Home />}
 				/>
+				<Route
+					path="/profile"
+					element={<PrivateRoute />}>
+					<Route
+						path=""
+						element={<Profile />}
+					/>
+				</Route>
 				<Route
 					path="/about"
 					element={<About />}

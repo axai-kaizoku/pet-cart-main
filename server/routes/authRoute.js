@@ -17,6 +17,11 @@ router.post('/signup', sigupController);
 // Login || POST
 router.post('/login', loginController);
 
+// Profile || GET protected route
+router.get('/profile', requireSignIn, (req, res) => {
+	res.status(200).send({ ok: true });
+});
+
 // Test Route
 router.get('/test', requireSignIn, isAdmin, testController);
 

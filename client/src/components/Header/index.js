@@ -2,8 +2,20 @@ import React from 'react';
 import './styles.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/logo512.png';
+import { useAuth } from '../../context/auth';
+import toast from 'react-hot-toast';
 
 const Header = () => {
+	const [auth, setAuth] = useAuth();
+	const handleLogout = () => {
+		setAuth({
+			...auth,
+			user: null,
+			token: '',
+		});
+		localStorage.removeItem('auth');
+		toast.success('Logout Success!');
+	};
 	// const currentPath = window.location.pathname;
 	// const currentPathName = currentPath.split('/')[1];
 
@@ -21,7 +33,7 @@ const Header = () => {
 	// }, [currentPathName, dispatch]);
 
 	// const cart = [1, 2, 3, 4];
-	const login = false;
+
 	return (
 		<>
 			<nav>
@@ -54,32 +66,34 @@ const Header = () => {
 								Store
 							</NavLink>
 						</li>
-						{login ? (
+						{!auth.user ? (
 							<li>
-								<NavLink
-									to="/profile"
-									id="navLink">
-									Profile
-								</NavLink>
-							</li>
-						) : (
-							''
-						)}
-						<li>
-							{login ? (
-								<NavLink
-									to="/"
-									id="navLink">
-									Logout
-								</NavLink>
-							) : (
 								<NavLink
 									to="/login"
 									id="navLink">
 									Login
 								</NavLink>
-							)}
-						</li>
+							</li>
+						) : (
+							<>
+								<li>
+									<NavLink
+										to="/profile"
+										id="navLink">
+										Profile
+									</NavLink>
+								</li>
+								<li>
+									<NavLink
+										to="/"
+										onClick={handleLogout}
+										id="navLink">
+										Logout
+									</NavLink>
+								</li>
+							</>
+						)}
+
 						<li>
 							<NavLink
 								to="/cart"

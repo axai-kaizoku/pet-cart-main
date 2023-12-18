@@ -1,0 +1,89 @@
+/* Converted from Tailwind CSS to normal CSS */
+
+.loading-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	outline: none;
+	border: none;
+}
+
+.loading-container-inner1 {
+	position: relative;
+	/* width: 11/12; */
+	/* max-width: 3xl; */
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loading-container-inner2 {
+	position: relative;
+	width: 200px;
+	/* height: 100px; */
+	border: 0;
+	border-radius: 8px;
+	box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
+	/* background-color: #fff; */
+	outline: none;
+	border: none;
+}
+
+.loading {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	mix-blend-mode: multiply;
+	animation: rotate 1s infinite cubic-bezier(0.77, 0, 0.175, 1);
+	padding: 1rem;
+}
+
+.loading::before,
+.loading::after {
+	content: '';
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	mix-blend-mode: multiply;
+	animation: rotate 1s infinite cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.loading::before {
+	background-color: #ff0d86;
+}
+
+.loading::after {
+	background-color: #2a58ff;
+	animation-delay: 0.5s;
+}
+
+.loading-background {
+	position: fixed;
+	inset: 0;
+	z-index: 40;
+	background-color: #000;
+	opacity: 0.25;
+}
+
+@keyframes rotate {
+	0%,
+	100% {
+		left: 95px;
+	}
+	25% {
+		transform: scale(0.3);
+	}
+	50% {
+		left: 0;
+	}
+	75% {
+		transform: scale(1);
+	}
+}
