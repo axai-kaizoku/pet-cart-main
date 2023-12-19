@@ -19,29 +19,22 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			const res = await axios.post('/api/v1/auth/login', { email, password });
-			console.log('Problem is here on line 25 login page');
 
 			if (res && res.data.success) {
 				toast.success(res.data && res.data.message);
-				console.log('Problem is here on line 29 login page');
 
 				setAuth({
 					...auth,
 					user: res.data.user,
 					token: res.data.token,
 				});
-				console.log('Problem is here on line 36 login page');
 
 				localStorage.setItem('auth', JSON.stringify(res.data));
 				navigate(location.state || '/');
-				console.log('Problem is here on line 40 login page');
 			} else {
-				console.log('Problem is here on line 43 login page');
-
 				toast.error(res.data.message);
 			}
 		} catch (error) {
-			console.log('Problem is here on line 38 login page');
 			console.log(error);
 			toast.error('Something went wrong!');
 		}

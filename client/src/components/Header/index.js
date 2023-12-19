@@ -80,7 +80,7 @@ const Header = () => {
 							<>
 								<li>
 									<NavLink
-										to="/profile"
+										to={`/profile/${auth?.user?.role === 1 ? 'admin' : 'user'}`}
 										id="navLink">
 										Profile
 									</NavLink>

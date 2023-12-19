@@ -26,6 +26,11 @@ router.get('/profile', requireSignIn, (req, res) => {
 	res.status(200).send({ ok: true });
 });
 
+// Admin || GET protected route
+router.get('/admin', requireSignIn, isAdmin, (req, res) => {
+	res.status(200).send({ ok: true });
+});
+
 // Test Route
 router.get('/test', requireSignIn, isAdmin, testController);
 
