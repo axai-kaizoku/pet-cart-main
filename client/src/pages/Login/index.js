@@ -76,6 +76,15 @@ const Login = () => {
 						/>
 					</div>
 					<div className="mb-3">
+						<p
+							onClick={() => {
+								navigate('/forgot-password');
+							}}
+							style={{ cursor: 'pointer' }}>
+							Forgot Password
+						</p>
+					</div>
+					<div className="mb-3">
 						<p>
 							Don't have an account?
 							<Link

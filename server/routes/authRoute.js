@@ -3,6 +3,7 @@ const {
 	sigupController,
 	loginController,
 	testController,
+	forgotPasswordController,
 } = require('../controllers/authController');
 const { requireSignIn, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -16,6 +17,9 @@ router.post('/signup', sigupController);
 
 // Login || POST
 router.post('/login', loginController);
+
+// Forgot Password || POST
+router.post('/forgot-password', forgotPasswordController);
 
 // Profile || GET protected route
 router.get('/profile', requireSignIn, (req, res) => {

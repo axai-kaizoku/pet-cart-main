@@ -12,6 +12,7 @@ const Signup = () => {
 	const [phone, setPhone] = useState('');
 	const [address, setAddress] = useState('');
 	const [password, setPassword] = useState('');
+	const [answer, setAnswer] = useState('');
 
 	const navigate = useNavigate();
 	const handleSubmit = async (e) => {
@@ -24,6 +25,7 @@ const Signup = () => {
 				phone,
 				address,
 				password,
+				answer,
 			});
 			if (res && res.data.success) {
 				toast.success(res.data.message);
@@ -105,6 +107,17 @@ const Signup = () => {
 							className="form-control"
 							id="exampleInputPassword1"
 							placeholder="Enter Your Password"
+							required
+						/>
+					</div>
+					<div className="mb-3">
+						<input
+							type="text"
+							value={answer}
+							onChange={(e) => setAnswer(e.target.value)}
+							className="form-control"
+							id="exampleInputPassword1"
+							placeholder="What is your Favorite Dish?"
 							required
 						/>
 					</div>

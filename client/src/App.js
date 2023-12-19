@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import PrivateRoute from './components/Routes/Private';
 import Profile from './components/Profile';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
 	return (
@@ -40,6 +41,10 @@ function App() {
 				<Route
 					path="/login"
 					element={<Login />}
+				/>
+				<Route
+					path="/forgot-password"
+					element={<ForgotPassword />}
 				/>
 				<Route
 					path="*"
