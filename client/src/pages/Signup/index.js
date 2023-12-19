@@ -12,14 +12,19 @@ const Signup = () => {
 	const [phone, setPhone] = useState('');
 	const [address, setAddress] = useState('');
 	const [password, setPassword] = useState('');
+
 	const navigate = useNavigate();
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const res = await axios.post(
-				`${process.env.REACT_APP_API}/api/v1/auth/signup`,
-				{ firstName, lastName, email, phone, address, password },
-			);
+			const res = await axios.post('/api/v1/auth/signup', {
+				firstName,
+				lastName,
+				email,
+				phone,
+				address,
+				password,
+			});
 			if (res && res.data.success) {
 				toast.success(res.data.message);
 				navigate('/login');

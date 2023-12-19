@@ -67,13 +67,15 @@ const Header = () => {
 							</NavLink>
 						</li>
 						{!auth.user ? (
-							<li>
-								<NavLink
-									to="/login"
-									id="navLink">
-									Login
-								</NavLink>
-							</li>
+							<>
+								<li>
+									<NavLink
+										to="/login"
+										id="navLink">
+										Login
+									</NavLink>
+								</li>
+							</>
 						) : (
 							<>
 								<li>
