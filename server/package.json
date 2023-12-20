@@ -6,8 +6,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"server": "nodemon server.js",
-		"client": "npm start --perfix ./client",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
+		"client": "npm start --perfix ./client"
 	},
 	"keywords": [],
 	"author": "axai-kaizoku",
@@ -23,6 +22,7 @@
 		"mongoose": "^6.8.4",
 		"morgan": "^1.10.0",
 		"nodemon": "^2.0.20",
-		"react-icons": "^4.7.1"
+		"react-icons": "^4.7.1",
+		"slugify": "^1.6.6"
 	}
 }

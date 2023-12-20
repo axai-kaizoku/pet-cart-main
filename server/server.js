@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const connectDB = require('./database/index');
 const authRoutes = require('./routes/authRoute');
+const cateogryRoutes = require('./routes/categoryRoutes');
 const cors = require('cors');
 
 //configure dotenv
@@ -21,6 +22,7 @@ app.use(morgan('dev'));
 
 //routes
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/category', cateogryRoutes);
 
 // rest api
 app.get('/', (req, res) => {
