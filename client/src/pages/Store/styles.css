@@ -1,0 +1,140 @@
+.store {
+	width: 100%;
+}
+
+.store-container {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.store-area {
+	display: flex;
+	width: 100%;
+	height: max-content;
+}
+
+.store-search {
+	padding: 2rem;
+}
+
+.store-search input {
+	font-size: 18px;
+	margin: 0.5rem 5rem;
+	padding: 0.5rem 1rem;
+}
+
+/* productlist css styles */
+
+.product-list {
+	width: 70%;
+}
+
+.product-list-inner {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.product-list-inner-product {
+	margin: 1rem;
+	border: 1px solid black;
+	border-radius: 0.2rem;
+	padding: 1rem;
+}
+
+.product-upper {
+	display: flex;
+	flex-direction: column;
+}
+
+.product-upper-img {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	background-position: center;
+}
+
+.product-upper-img img {
+	object-fit: cover;
+}
+
+.product-upper-inner {
+}
+
+.product-price {
+	display: flex;
+	margin: 0.2rem;
+	padding: 1rem 0.5rem;
+}
+
+.product-price span {
+	padding: 0.5rem 1rem;
+	font-weight: 500;
+}
+
+.product-price p {
+	background-color: rgb(14, 157, 213);
+	color: white;
+	border-radius: 0.6rem;
+	font-weight: 500;
+}
+
+#product-name {
+	font-weight: 700;
+	text-decoration: none;
+	color: black;
+	margin: 4rem 1rem;
+}
+
+.product-lower {
+	margin-left: 2.8rem;
+	margin-top: 3rem;
+}
+
+.product-lower button {
+	font-weight: 600;
+	padding: 0.6rem 1.2rem;
+	border-radius: 0.2rem;
+	border: 0.5px solid black;
+}
+
+/* categories-card css styles */
+
+.categories-card {
+	width: 25%;
+	height: fit-content;
+	border: 1px solid black;
+	margin: 0.5rem 4rem;
+}
+
+.categories-card-inner {
+	display: flex;
+	flex-direction: column;
+	background-color: aliceblue;
+}
+
+.categories-card-inner h2 {
+	padding: 0rem 3rem;
+}
+
+.categories-card-inner ul {
+	display: flex;
+	flex-direction: column;
+}
+
+.categories-card-inner ul li {
+	padding: 0.5rem 0px;
+}
+
+#back-btn {
+	padding: 0.5rem 2.5em;
+	margin: 0.5rem 0rem;
+	text-decoration: none;
+}
+
+#link {
+	text-decoration: none;
+	color: black;
+}

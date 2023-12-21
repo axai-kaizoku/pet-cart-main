@@ -18,6 +18,7 @@ import Profile from './pages/Profile';
 import Orders from './pages/Orders';
 import Products from './pages/Products';
 import UpdateProduct from './pages/UpdateProduct';
+import Store from './pages/Store';
 
 function App() {
 	return (
@@ -71,6 +72,10 @@ function App() {
 						element={<Users />}
 					/>
 				</Route>
+				<Route
+					path="/store"
+					element={<Store />}
+				/>
 				<Route
 					path="/about"
 					element={<About />}
