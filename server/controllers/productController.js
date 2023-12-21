@@ -127,27 +127,27 @@ const deleteProductController = async (req, res) => {
 
 const updateProductController = async (req, res) => {
 	try {
-		const { name, slug, description, price, category, quantity, shipping } =
+		const { name, description, price, category, quantity, shipping } =
 			req.fields;
 		const { image } = req.files;
-
-		//validation
+		//alidation
 		switch (true) {
 			case !name:
-				return res.status(500).send({ message: 'Name is required' });
+				return res.status(500).send({ error: 'Name is Required' });
 			case !description:
-				return res.status(500).send({ message: 'Description is required' });
+				return res.status(500).send({ error: 'Description is Required' });
 			case !price:
-				return res.status(500).send({ message: 'Price is required' });
+				return res.status(500).send({ error: 'Price is Required' });
 			case !category:
-				return res.status(500).send({ message: 'Category is required' });
+				return res.status(500).send({ error: 'Category is Required' });
 			case !quantity:
-				return res.status(500).send({ message: 'Quantity is required' });
-			case !image && image.size > 100000:
+				return res.status(500).send({ error: 'Quantity is Required' });
+			case image && image.size > 1000000:
 				return res
 					.status(500)
-					.send({ message: 'Image is required and should be less than 1mb' });
+					.send({ error: 'photo is Required and should be less then 1mb' });
 		}
+
 		const products = await productModel.findByIdAndUpdate(
 			req.params.pid,
 			{ ...req.fields, slug: slugify(name) },
@@ -160,15 +160,15 @@ const updateProductController = async (req, res) => {
 		await products.save();
 		res.status(201).send({
 			success: true,
-			message: 'Product updated successfully!',
+			message: 'Product Updated Successfully',
 			products,
 		});
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({
 			success: false,
-			message: 'Error in creating product',
 			error,
+			message: 'Error in Updating product',
 		});
 	}
 };
