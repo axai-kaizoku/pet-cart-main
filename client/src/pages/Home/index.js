@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './styles.css';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
 import { useAuth } from '../../context/auth';
-import { Link } from 'react-router-dom';
 
 import dog from '../../assets/categories/dogs/dog.jpeg';
 import cat from '../../assets/categories/cats/cat.jpeg';
@@ -95,7 +94,7 @@ const brands = [
 
 const Home = () => {
 	const [auth, setAuth] = useAuth();
-	const [categories, setCategories] = useState([]);
+
 	return (
 		<Layout title="Home">
 			<Banner />
@@ -107,19 +106,15 @@ const Home = () => {
 					</div>
 					<div className="categories-section">
 						{homeCategories.map(({ name, url, path }, index) => (
-							<Link
-								to="/"
-								id="link">
-								<div
-									key={index}
-									className="individual-category">
-									<img
-										src={`${url}`}
-										alt={name}
-									/>
-									<p>{name}</p>
-								</div>
-							</Link>
+							<div
+								key={index}
+								className="individual-category">
+								<img
+									src={url}
+									alt={name}
+								/>
+								<p>{name}</p>
+							</div>
 						))}
 					</div>
 				</div>

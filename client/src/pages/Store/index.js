@@ -4,6 +4,8 @@ import Layout from '../../components/Layout';
 import { Radio } from 'antd';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import SearchInput from '../../components/SearchInput';
+import { useSearch } from '../../context/search';
 
 const Store = () => {
 	const [products, setProducts] = useState([]);
@@ -12,6 +14,10 @@ const Store = () => {
 	const [total, setTotal] = useState(0);
 	const [page, setPage] = useState(1);
 	const [loading, setLoading] = useState(false);
+	const [values, setValues] = useSearch();
+
+	const searchedProducts = values?.results;
+	console.log(searchedProducts);
 
 	// get products
 	const getAllProducts = async () => {
@@ -110,10 +116,7 @@ const Store = () => {
 			<div className="store">
 				<div className="store-container">
 					<div className="store-search">
-						<input
-							type="text"
-							placeholder="Search"
-						/>
+						<SearchInput />
 					</div>
 				</div>
 				<div className="store-area">
@@ -122,52 +125,63 @@ const Store = () => {
 							<h2>Categories</h2>
 							{JSON.stringify(checked, null, 4)}
 							<ul>
-								<Radio.Group>
+								<Radio.Group
+									style={{
+										textDecoration: 'none',
+										border: 'none',
+										appearance: 'none',
+									}}>
 									{categories?.map((c) => (
 										<li
 											key={c._id}
 											onClick={(e) => handleFilter(e.target.checked, c._id)}>
-											<Radio value={c._id}>{c.name}</Radio>
+											<Radio.Button
+												id="radio-btns"
+												value={c._id}>
+												{c.name}
+											</Radio.Button>
 										</li>
 									))}
 								</Radio.Group>
 							</ul>
 							<Link
 								id="back-btn"
-								to="/store">
-								Back
+								onClick={() => setChecked([])}>
+								Reset
 							</Link>
 						</div>
 					</div>
 					<div className="product-list">
 						<div className="product-list-inner">
 							{products?.map((item) => (
-								<div
-									className="product-list-inner-product"
-									key={item._id}>
-									<div className="product-upper">
-										<div className="product-upper-img">
-											<img
-												src={`/api/v1/product/product-image/${item._id}`}
-												alt="product"
-											/>
-										</div>
-										<div className="product-upper-inner">
-											<div className="product-price">
-												<span>Price:</span>
-												<p>${item.price}</p>
+								<>
+									<div
+										className="product-list-inner-product"
+										key={item._id}>
+										<div className="product-upper">
+											<div className="product-upper-img">
+												<img
+													src={`/api/v1/product/product-image/${item._id}`}
+													alt="product"
+												/>
 											</div>
-											<Link
-												id="product-name"
-												to="/store/product/:id">
-												{item.name}
-											</Link>
+											<div className="product-upper-inner">
+												<div className="product-price">
+													<span>Price:</span>
+													<p>${item.price}</p>
+												</div>
+												<Link
+													id="product-name"
+													to={`/product/${item.slug}`}>
+													{item.name}
+												</Link>
+											</div>
+										</div>
+										<div className="product-lower">
+											<button>Add To Cart</button>
 										</div>
 									</div>
-									<div className="product-lower">
-										<button>Add To Cart</button>
-									</div>
-								</div>
+								</>
 							))}
 						</div>
 						<div className="m-2 p-3">

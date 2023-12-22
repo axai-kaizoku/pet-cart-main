@@ -138,3 +138,10 @@
 	text-decoration: none;
 	color: black;
 }
+
+/* antd radio btns color change */
+
+#radio-btns {
+	border-color: red;
+	border: 1px solid black;
+}
