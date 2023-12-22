@@ -4,6 +4,7 @@ import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
 import { useAuth } from '../../context/auth';
 import useCategory from '../../hooks/useCategory';
+import { Link } from 'react-router-dom';
 
 import dog from '../../assets/categories/dogs/dog.jpeg';
 import cat from '../../assets/categories/cats/cat.jpeg';
@@ -21,35 +22,6 @@ import nutro from '../../assets/homepage/brands/nutro.jpg';
 import purina from '../../assets/homepage/brands/purina.jpg';
 import royalCannin from '../../assets/homepage/brands/royal-canin.jpg';
 import vibeful from '../../assets/homepage/brands/vibeful.jpeg';
-import { Link } from 'react-router-dom';
-
-const homeCategories = [
-	{
-		url: dog,
-		name: 'Dog',
-		path: '/store/category/dog',
-	},
-	{
-		url: cat,
-		name: 'Cat',
-		path: '/store/category/cat',
-	},
-	{
-		url: fish,
-		name: 'Fish',
-		path: '/store/category/fish',
-	},
-	{
-		url: hamster,
-		name: 'Hamster',
-		path: '/store/category/hamster',
-	},
-	{
-		url: bird,
-		name: 'Bird',
-		path: '/store/category/bird',
-	},
-];
 
 const brands = [
 	{
@@ -98,17 +70,35 @@ const Home = () => {
 	const [auth, setAuth] = useAuth();
 	const category = useCategory();
 
+	category.map((c) => {
+		if (c.slug === 'dog') {
+			c.img = dog;
+		}
+		if (c.slug === 'cat') {
+			c.img = cat;
+		}
+		if (c.slug === 'hamster') {
+			c.img = hamster;
+		}
+		if (c.slug === 'bird') {
+			c.img = bird;
+		}
+		if (c.slug === 'fish') {
+			c.img = fish;
+		}
+	});
+
 	return (
 		<Layout title="Home">
 			<Banner />
-			{/* <h1>Homepage</h1> */}
+
 			<div className="categories">
 				<div className="category-container">
 					<div className="category-heading">
 						<h2>Shop By Pet</h2>
 					</div>
 					<div className="categories-section">
-						{category.map(({ name, url, slug }, index) => (
+						{category.map(({ name, img, slug }, index) => (
 							<Link
 								id="link"
 								to={`/store/category/${slug}`}>
@@ -116,7 +106,7 @@ const Home = () => {
 									key={index}
 									className="individual-category">
 									<img
-										src={dog}
+										src={img}
 										alt={name}
 									/>
 									<p>{name}</p>
@@ -143,7 +133,6 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
-			<pre>{JSON.stringify(auth, null, 4)}</pre>
 		</Layout>
 	);
 };
