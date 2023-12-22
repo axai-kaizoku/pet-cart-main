@@ -11,6 +11,7 @@ const {
 	productCountController,
 	productListController,
 	searchProductController,
+	productCategoryController,
 } = require('../controllers/productController');
 const formidable = require('express-formidable');
 
@@ -56,5 +57,8 @@ router.get('/product-list/:page', productListController);
 
 //product search
 router.get('/search/:keyword', searchProductController);
+
+// category wise
+router.get('/product-category/:slug', productCategoryController);
 
 module.exports = router;

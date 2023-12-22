@@ -21,6 +21,7 @@ import UpdateProduct from './pages/UpdateProduct';
 import Store from './pages/Store';
 import Search from './pages/Search';
 import ProductDetails from './pages/ProductDetails';
+import CategoryProducts from './pages/CategoryProducts';
 
 function App() {
 	return (
@@ -85,6 +86,10 @@ function App() {
 				<Route
 					path="/store"
 					element={<Store />}
+				/>
+				<Route
+					path="/store/category/:slug"
+					element={<CategoryProducts />}
 				/>
 				<Route
 					path="/about"

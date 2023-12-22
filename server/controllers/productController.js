@@ -1,4 +1,5 @@
 const productModel = require('../models/productModel');
+const categoryModel = require('../models/categoryModel');
 const fs = require('fs');
 const slugify = require('slugify');
 
@@ -258,6 +259,25 @@ const searchProductController = async (req, res) => {
 	}
 };
 
+const productCategoryController = async (req, res) => {
+	try {
+		const category = await categoryModel.findOne({ slug: req.params.slug });
+		const products = await productModel.find({ category }).populate('category');
+		res.status(200).send({
+			success: true,
+			category,
+			products,
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(400).send({
+			success: false,
+			error,
+			message: 'Error in fetching products by category',
+		});
+	}
+};
+
 module.exports = {
 	createProductController,
 	getProductController,
@@ -269,4 +289,5 @@ module.exports = {
 	productCountController,
 	productListController,
 	searchProductController,
+	productCategoryController,
 };

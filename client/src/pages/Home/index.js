@@ -3,6 +3,7 @@ import './styles.css';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
 import { useAuth } from '../../context/auth';
+import useCategory from '../../hooks/useCategory';
 
 import dog from '../../assets/categories/dogs/dog.jpeg';
 import cat from '../../assets/categories/cats/cat.jpeg';
@@ -20,6 +21,7 @@ import nutro from '../../assets/homepage/brands/nutro.jpg';
 import purina from '../../assets/homepage/brands/purina.jpg';
 import royalCannin from '../../assets/homepage/brands/royal-canin.jpg';
 import vibeful from '../../assets/homepage/brands/vibeful.jpeg';
+import { Link } from 'react-router-dom';
 
 const homeCategories = [
 	{
@@ -94,6 +96,7 @@ const brands = [
 
 const Home = () => {
 	const [auth, setAuth] = useAuth();
+	const category = useCategory();
 
 	return (
 		<Layout title="Home">
@@ -105,16 +108,20 @@ const Home = () => {
 						<h2>Shop By Pet</h2>
 					</div>
 					<div className="categories-section">
-						{homeCategories.map(({ name, url, path }, index) => (
-							<div
-								key={index}
-								className="individual-category">
-								<img
-									src={url}
-									alt={name}
-								/>
-								<p>{name}</p>
-							</div>
+						{category.map(({ name, url, slug }, index) => (
+							<Link
+								id="link"
+								to={`/store/category/${slug}`}>
+								<div
+									key={index}
+									className="individual-category">
+									<img
+										src={dog}
+										alt={name}
+									/>
+									<p>{name}</p>
+								</div>
+							</Link>
 						))}
 					</div>
 				</div>
