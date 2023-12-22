@@ -7,9 +7,12 @@ import { Link } from 'react-router-dom';
 import SearchInput from '../../components/SearchInput';
 import { useSearch } from '../../context/search';
 import useCategory from '../../hooks/useCategory';
+import { useCart } from '../../context/cart';
+import toast from 'react-hot-toast';
 
 const Store = () => {
 	const [products, setProducts] = useState([]);
+	const [cart, setCart] = useCart();
 	// const [categories, setCategories] = useState([]);
 	// const [checked, setChecked] = useState([]);
 	const [total, setTotal] = useState(0);
@@ -191,7 +194,18 @@ const Store = () => {
 											</div>
 										</div>
 										<div className="product-lower">
-											<button>Add To Cart</button>
+											<button
+												className="btn btn-secondary"
+												onClick={() => {
+													setCart([...cart, item]);
+													localStorage.setItem(
+														'cart',
+														JSON.stringify([...cart, item]),
+													);
+													toast.success('Item added to cart');
+												}}>
+												Add To Cart
+											</button>
 										</div>
 									</div>
 								</>

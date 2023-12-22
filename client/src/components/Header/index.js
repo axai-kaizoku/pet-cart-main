@@ -4,9 +4,12 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/logo512.png';
 import { useAuth } from '../../context/auth';
 import toast from 'react-hot-toast';
+import { useCart } from '../../context/cart';
+import { Badge } from 'antd';
 
 const Header = () => {
 	const [auth, setAuth] = useAuth();
+	const [cart] = useCart();
 	const handleLogout = () => {
 		setAuth({
 			...auth,
@@ -100,7 +103,12 @@ const Header = () => {
 							<NavLink
 								to="/cart"
 								id="navLink">
-								Cart
+								<Badge
+									count={cart?.length}
+									size="small"
+									color="blue">
+									<p className="mt-1 mr-1 p-0">Cart</p>
+								</Badge>
 							</NavLink>
 						</li>
 					</ul>

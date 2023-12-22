@@ -4,6 +4,9 @@ import Layout from '../../components/Layout';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../../context/cart';
+import toast from 'react-hot-toast';
+
 // import ScrollCart from '../../components/ScrollCart';
 // import ReviewCard from '../../components/ReviewCard';
 // import StarRating from '../../components/StarRating';
@@ -27,6 +30,7 @@ const ProductDetails = () => {
 	const auth = true;
 	const reviews = [];
 	const params = useParams();
+	const [cart, setCart] = useCart();
 	// const [open, setOpen] = useState(false);
 	// const handleOpen = () => setOpen(true);
 	// const handleClose = () => setOpen(false);
@@ -90,7 +94,18 @@ const ProductDetails = () => {
 								<div className="right-lower-container-price">
 									<span className="product-price">${product.price}</span>
 									<div className="buy-wishlist-btns">
-										<button className="add-to-cart-btn">Add To Cart</button>
+										<button
+											className="add-to-cart-btn"
+											onClick={() => {
+												setCart([...cart, product]);
+												localStorage.setItem(
+													'cart',
+													JSON.stringify([...cart, product]),
+												);
+												toast.success('Item added to cart');
+											}}>
+											Add To Cart
+										</button>
 										{auth && (
 											<button className="add-to-wishlist-btn">
 												{/* <BookmarkIcon /> */}

@@ -22,6 +22,7 @@ import Store from './pages/Store';
 import Search from './pages/Search';
 import ProductDetails from './pages/ProductDetails';
 import CategoryProducts from './pages/CategoryProducts';
+import Cart from './pages/Cart';
 
 function App() {
 	return (
@@ -86,6 +87,10 @@ function App() {
 				<Route
 					path="/store"
 					element={<Store />}
+				/>
+				<Route
+					path="/cart"
+					element={<Cart />}
 				/>
 				<Route
 					path="/store/category/:slug"
