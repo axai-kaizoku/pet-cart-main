@@ -21,7 +21,7 @@ const Products = () => {
 
 	useEffect(() => {
 		getAllProducts();
-	}, []);
+	}, [products]);
 
 	return (
 		<Layout>
@@ -32,7 +32,13 @@ const Products = () => {
 					</div>
 					<div className="col-md-9 ">
 						<h1 className="text-center">All Products List</h1>
-						<div className="d-flex">
+						<div
+							className="d-flex"
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								flexWrap: 'wrap',
+							}}>
 							{products?.map((p) => (
 								<Link
 									key={p._id}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import Layout from '../../components/Layout';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/cart';
@@ -31,6 +31,7 @@ const ProductDetails = () => {
 	const reviews = [];
 	const params = useParams();
 	const [cart, setCart] = useCart();
+	const location = useLocation();
 	// const [open, setOpen] = useState(false);
 	// const handleOpen = () => setOpen(true);
 	// const handleClose = () => setOpen(false);
@@ -61,20 +62,20 @@ const ProductDetails = () => {
 						<div className="left-container">
 							<Link
 								id="back-to-cart-btn"
-								to="/store">
+								to={location.state || `/store`}>
 								Back
 							</Link>
 							<img
 								className="product-img"
 								src={`/api/v1/product/product-image/${product._id}`}
-								alt="e-commerce"
+								alt={product.name}
 							/>
 						</div>
 						<div className="right-container">
 							<h1 className="product-name">{product.name}</h1>
 							<div className="product-reviews-div">
 								<div className="star-rating">{/* <StarRating /> */}</div>
-								<p>(1 review)</p>
+								{/* <p>(1 review)</p> */}
 							</div>
 							<p className="product-description">{product.description}</p>
 							<div className="right-lower-container">
@@ -106,11 +107,11 @@ const ProductDetails = () => {
 											}}>
 											Add To Cart
 										</button>
-										{auth && (
+										{/* {auth && (
 											<button className="add-to-wishlist-btn">
-												{/* <BookmarkIcon /> */}
+												<BookmarkIcon />
 											</button>
-										)}
+										)} */}
 									</div>
 								</div>
 								<div className="give-product-rating-review">
@@ -154,7 +155,7 @@ const ProductDetails = () => {
 				</div>
 				{reviews?.length === 0 ? (
 					<div className="product-review-section">
-						<h2>Reviews</h2>
+						{/* <h2>Reviews</h2> */}
 						<hr />
 						<div className="reviews-section">
 							{/* <ReviewCard />

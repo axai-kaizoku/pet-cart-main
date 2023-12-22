@@ -4,6 +4,7 @@ const {
 	loginController,
 	testController,
 	forgotPasswordController,
+	updateProfileController,
 } = require('../controllers/authController');
 const { requireSignIn, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -30,6 +31,9 @@ router.get('/profile', requireSignIn, (req, res) => {
 router.get('/admin', requireSignIn, isAdmin, (req, res) => {
 	res.status(200).send({ ok: true });
 });
+
+// update profile
+router.put('/update-profile', requireSignIn, updateProfileController);
 
 // Test Route
 router.get('/test', requireSignIn, isAdmin, testController);

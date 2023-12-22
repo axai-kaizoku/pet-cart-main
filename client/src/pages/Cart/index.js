@@ -11,7 +11,6 @@ import CartSingleItem from '../../components/CartSingleItem';
 const Cart = () => {
 	const [auth, setAuth] = useAuth();
 	const [cart, setCart] = useCart();
-	const navigate = useNavigate();
 
 	const totalPrice = () => {
 		try {
@@ -72,7 +71,7 @@ const Cart = () => {
 										/>
 									))
 								) : (
-									<h2 className="cart-empty-msg">Your cart is empty</h2>
+									<h6 className="cart-empty-msg">Your cart is empty</h6>
 								)}
 							</div>
 
@@ -98,6 +97,7 @@ const Cart = () => {
 								) : (
 									<Link
 										to="/login"
+										state="/cart"
 										id="login-checkout-btn">
 										<button className="login-checkout-btn">
 											Login to Checkout

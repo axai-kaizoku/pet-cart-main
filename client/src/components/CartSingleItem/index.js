@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
+import { Link } from 'react-router-dom';
 
 const CartSingleItem = ({ item, handleRemove }) => {
 	const [num, setNum] = useState(1);
@@ -13,7 +14,14 @@ const CartSingleItem = ({ item, handleRemove }) => {
 					/>
 				</div>
 				<div className="product-details-name">
-					<span>{item.name}</span>
+					<span>
+						<Link
+							id="link"
+							state="/cart"
+							to={`/product/${item.slug}`}>
+							{item.name}
+						</Link>
+					</span>
 					<button onClick={() => handleRemove(item._id)}>Remove</button>
 				</div>
 			</div>
@@ -37,7 +45,7 @@ const CartSingleItem = ({ item, handleRemove }) => {
 					+
 				</div>
 			</div>
-			<span className="price">$ {item.price}</span>
+			<span className="price">${item.price}</span>
 		</div>
 	);
 };
