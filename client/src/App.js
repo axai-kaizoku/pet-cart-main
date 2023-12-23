@@ -23,6 +23,7 @@ import Search from './pages/Search';
 import ProductDetails from './pages/ProductDetails';
 import CategoryProducts from './pages/CategoryProducts';
 import Cart from './pages/Cart';
+import AdminOrders from './pages/AdminOrders';
 
 function App() {
 	return (
@@ -78,6 +79,10 @@ function App() {
 					<Route
 						path="admin/products"
 						element={<Products />}
+					/>
+					<Route
+						path="admin/orders"
+						element={<AdminOrders />}
 					/>
 					<Route
 						path="admin/users"

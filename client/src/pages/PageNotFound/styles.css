@@ -23,10 +23,10 @@
 	padding: 0rem 2rem;
 }
 
-.page-not-found .inner-container h1 {
-	padding: 1rem 0.4rem;
+.page-not-found .inner-container .inner-container-inner h1 {
 	margin: 0.2rem;
-	font-size: 6rem;
+	font-size: 7rem;
+	font-weight: 800;
 }
 
 .page-not-found .inner-container h2 {

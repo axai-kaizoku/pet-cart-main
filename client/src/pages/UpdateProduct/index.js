@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { Image, Select } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 const { Option } = Select;
 
 const UpdateProduct = () => {
@@ -19,13 +21,16 @@ const UpdateProduct = () => {
 	const [shipping, setShipping] = useState('');
 	const [image, setImage] = useState('');
 	const [id, setId] = useState('');
+	const [load, setLoad] = useLoad();
 
 	//get single product
 	const getSingleProduct = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get(
 				`/api/v1/product/get-product/${params.slug}`,
 			);
+
 			setName(data.product.name);
 			setId(data.product._id);
 			setDescription(data.product.description);
@@ -34,8 +39,10 @@ const UpdateProduct = () => {
 			setQuantity(data.product.quantity);
 			setShipping(data.product.shipping);
 			setCategory(data.product.category._id);
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 	useEffect(() => {
@@ -46,13 +53,16 @@ const UpdateProduct = () => {
 	//get all category
 	const getAllCategory = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/category/get-categories');
+			setLoad(false);
 			if (data?.success) {
 				setCategories(data?.category);
 			}
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong in fetching catgeory');
+			setLoad(false);
 		}
 	};
 
@@ -64,6 +74,7 @@ const UpdateProduct = () => {
 	const handleUpdate = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const productData = new FormData();
 			productData.append('name', name);
 			productData.append('description', description);
@@ -75,6 +86,7 @@ const UpdateProduct = () => {
 				`/api/v1/product/update-product/${id}`,
 				productData,
 			);
+			setLoad(false);
 			if (data?.success) {
 				toast.success('Product Updated Successfully');
 				navigate('/profile/admin/products');
@@ -84,26 +96,31 @@ const UpdateProduct = () => {
 		} catch (error) {
 			console.log(error);
 			toast.error('something went wrong');
+			setLoad(false);
 		}
 	};
 
 	//delete a product
 	const handleDelete = async () => {
 		try {
+			setLoad(true);
 			let answer = window.prompt('Are You Sure want to delete this product ? ');
 			if (!answer) return;
 			const { data } = await axios.delete(
 				`/api/v1/product/delete-product/${id}`,
 			);
+			setLoad(false);
 			toast.success('Product Deleted Successfully!');
 			navigate('/profile/admin/products');
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong');
+			setLoad(false);
 		}
 	};
 	return (
 		<Layout title={'Profile - Update Product'}>
+			<Loading isLoading={load} />
 			<div className="container-fluid m-3 p-3">
 				<div className="row">
 					<div className="col-md-3">

@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import CategoryForm from '../../components/Form';
 import { Modal } from 'antd';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const CreateCategory = () => {
 	const [categories, setCategories] = useState([]);
@@ -12,14 +14,17 @@ const CreateCategory = () => {
 	const [visible, setVisible] = useState(false);
 	const [selected, setSelected] = useState(null);
 	const [updatedName, setUpdatedName] = useState('');
+	const [load, setLoad] = useLoad();
 
 	// handle form
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const { data } = await axios.post('/api/v1/category/create-category', {
 				name,
 			});
+			setLoad(false);
 			if (data?.success) {
 				toast.success(`${name} category is created!`);
 				getAllCategory();
@@ -29,19 +34,23 @@ const CreateCategory = () => {
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong in input form');
+			setLoad(false);
 		}
 	};
 
 	//get all categories
 	const getAllCategory = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/category/get-categories');
+			setLoad(false);
 			if (data?.success) {
 				setCategories(data?.category);
 			}
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong in fetching categories!');
+			setLoad(false);
 		}
 	};
 
@@ -53,10 +62,12 @@ const CreateCategory = () => {
 	const handleUpdate = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const { data } = await axios.put(
 				`/api/v1/category/update-category/${selected._id}`,
 				{ name: updatedName },
 			);
+			setLoad(false);
 			if (data.success) {
 				toast.success(`${updatedName} category is updated!`);
 				setSelected(null);
@@ -68,15 +79,18 @@ const CreateCategory = () => {
 			}
 		} catch (error) {
 			toast.error('Something went wrong');
+			setLoad(false);
 		}
 	};
 
 	// delete category
 	const handleDelete = async (pid) => {
 		try {
+			setLoad(true);
 			const { data } = await axios.delete(
 				`/api/v1/category/delete-category/${pid}`,
 			);
+			setLoad(false);
 			if (data.success) {
 				toast.success(`Category is deleted!`);
 				getAllCategory();
@@ -85,12 +99,14 @@ const CreateCategory = () => {
 			}
 		} catch (error) {
 			toast.error('Something went wrong');
+			setLoad(false);
 		}
 	};
 
 	return (
 		<Layout>
-			<div className="container-fluid m-3 p-3">
+			<Loading isLoading={load} />
+			<div className="container-fluid m-1.6 p-3">
 				<div className="row">
 					<div className="col-md-3">
 						<AdminMenu />

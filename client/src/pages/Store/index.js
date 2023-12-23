@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import Layout from '../../components/Layout';
-// import { Radio } from 'antd';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchInput from '../../components/SearchInput';
@@ -9,12 +8,14 @@ import { useSearch } from '../../context/search';
 import useCategory from '../../hooks/useCategory';
 import { useCart } from '../../context/cart';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const Store = () => {
 	const [products, setProducts] = useState([]);
 	const [cart, setCart] = useCart();
-	// const [categories, setCategories] = useState([]);
-	// const [checked, setChecked] = useState([]);
+	const [load, setLoad] = useLoad();
+	// const [load, setLoad] = useState(false);
 	const [total, setTotal] = useState(0);
 	const [page, setPage] = useState(1);
 	const [loading, setLoading] = useState(false);
@@ -27,11 +28,15 @@ const Store = () => {
 	const getAllProducts = async () => {
 		try {
 			setLoading(true);
+			setLoad(true);
 			const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
 			setLoading(false);
+
 			setProducts(data?.products);
+			setLoad(false);
 		} catch (error) {
 			setLoading(false);
+			setLoad(false);
 
 			console.log(error);
 		}
@@ -40,10 +45,14 @@ const Store = () => {
 	// get total count
 	const getTotal = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/product/product-count');
+			setLoad(false);
+
 			setTotal(data?.total);
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 
@@ -56,12 +65,15 @@ const Store = () => {
 	const loadMore = async () => {
 		try {
 			setLoading(true);
+			setLoad(true);
 			const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
-			setLoading(false);
 			setProducts([...products, ...data?.products]);
+			setLoading(false);
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
 			setLoading(false);
+			setLoad(false);
 		}
 	};
 
@@ -70,54 +82,9 @@ const Store = () => {
 		getTotal();
 	}, []);
 
-	// //get all categories
-	// const getAllCategory = async () => {
-	// 	try {
-	// 		const { data } = await axios.get('/api/v1/category/get-categories');
-	// 		if (data?.success) {
-	// 			setCategories(data?.category);
-	// 		}
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	getAllCategory();
-	// 	getTotal();
-	// }, []);
-
-	// filtering by category
-	// const handleFilter = (value, id) => {
-	// 	let all = [];
-	// 	if (value) {
-	// 		all.push(id);
-	// 	}
-	// 	setChecked(all);
-	// };
-
-	// useEffect(() => {
-	// 	if (!checked.length) getAllProducts();
-	// }, [checked.length]);
-
-	// useEffect(() => {
-	// 	if (checked.length) filterProducts();
-	// }, [checked]);
-
-	// // get filtered products
-	// const filterProducts = async () => {
-	// 	try {
-	// 		const { data } = await axios.post('/api/v1/product/filter-product', {
-	// 			checked,
-	// 		});
-	// 		setProducts(data?.products);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 	}
-	// };
-
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="store">
 				<div className="store-container">
 					<div className="store-search">
@@ -128,27 +95,6 @@ const Store = () => {
 					<div className="categories-card">
 						<div className="categories-card-inner">
 							<h2>Categories</h2>
-							{/* {JSON.stringify(checked, null, 4)} */}
-							{/* <ul>
-								<Radio.Group
-									style={{
-										textDecoration: 'none',
-										border: 'none',
-										appearance: 'none',
-									}}>
-									{categories?.map((c) => (
-										<li
-											key={c._id}
-											onClick={(e) => handleFilter(e.target.checked, c._id)}>
-											<Radio.Button
-												id="radio-btns"
-												value={c._id}>
-												{c.name}
-											</Radio.Button>
-										</li>
-									))}
-								</Radio.Group>
-							</ul> */}
 							<ul>
 								{categories?.map((c) => (
 									<li key={c._id}>

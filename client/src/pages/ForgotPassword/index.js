@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout';
-
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const ForgotPassword = () => {
 	const [email, setEmail] = useState('');
 	const [newPassword, setNewPassword] = useState('');
 	const [answer, setAnswer] = useState('');
+	const [load, setLoad] = useLoad();
 
 	const navigate = useNavigate();
 
@@ -16,12 +18,13 @@ const ForgotPassword = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const res = await axios.post('/api/v1/auth/forgot-password', {
 				email,
 				newPassword,
 				answer,
 			});
-
+			setLoad(false);
 			if (res && res.data.success) {
 				toast.success(res.data && res.data.message);
 
@@ -32,11 +35,13 @@ const ForgotPassword = () => {
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong!');
+			setLoad(false);
 		}
 	};
 
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="login-container">
 				<h1>Reset Password</h1>
 				<form onClick={handleSubmit}>

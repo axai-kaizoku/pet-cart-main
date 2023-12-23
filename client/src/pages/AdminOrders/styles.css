@@ -1,0 +1,8 @@
+#admin-orders-item-img {
+	width: 90px;
+	height: 110px;
+	object-fit: cover;
+	background-position: center;
+	padding: 1rem;
+	overflow: hidden;
+}

@@ -6,16 +6,22 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import moment from 'moment';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const Orders = () => {
 	const [orders, setOrders] = useState([]);
 	const [auth] = useAuth();
+	const [load, setLoad] = useLoad();
 	const getOrders = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/auth/orders');
 			setOrders(data);
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 
@@ -24,6 +30,7 @@ const Orders = () => {
 	}, [auth?.token]);
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="container-fluid m-1.6 p-3">
 				<div className="row">
 					<div className="col-md-3">
@@ -64,21 +71,21 @@ const Orders = () => {
 								) : (
 									<h6 className="text-center mt-5">No Orders Found</h6>
 								)} */}
-								{orders?.reverse().map((o, i) => {
+								{orders?.map((o, i) => {
 									return (
 										<div className="border">
 											<table className="table">
 												<thead>
 													<tr>
-														<td scope="col">
+														<th scope="col">
 															Purchased Date:{' '}
 															{moment(o?.createdAt).format('DD/MM/YYYY')}
-														</td>
+														</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<th>
+														<td>
 															{o?.products?.map((p, i) => (
 																<div
 																	className="individual-order"
@@ -102,7 +109,7 @@ const Orders = () => {
 																	</div>
 																</div>
 															))}
-														</th>
+														</td>
 													</tr>
 												</tbody>
 											</table>

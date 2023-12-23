@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { Select } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 const { Option } = Select;
 
 const CreateProduct = () => {
@@ -17,17 +19,21 @@ const CreateProduct = () => {
 	const [category, setCategory] = useState('');
 	const [quantity, setQuantity] = useState('');
 	const [shipping, setShipping] = useState('');
+	const [load, setLoad] = useLoad();
 
 	//get all products
 	const getAllCategory = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/category/get-categories');
+			setLoad(false);
 			if (data?.success) {
 				setCategories(data?.category);
 			}
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong in fetching categories!');
+			setLoad(false);
 		}
 	};
 
@@ -39,6 +45,7 @@ const CreateProduct = () => {
 	const handleCreate = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const productData = new FormData();
 			productData.append('name', name);
 			productData.append('description', description);
@@ -50,6 +57,7 @@ const CreateProduct = () => {
 				'/api/v1/product/create-product',
 				productData,
 			);
+			setLoad(false);
 			if (data?.success) {
 				toast.error(data?.message);
 			} else {
@@ -59,12 +67,14 @@ const CreateProduct = () => {
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong');
+			setLoad(false);
 		}
 	};
 
 	return (
 		<Layout>
-			<div className="container-fluid m-3 p-3">
+			<Loading isLoading={load} />
+			<div className="container-fluid m-1.6 p-3">
 				<div className="row">
 					<div className="col-md-3">
 						<AdminMenu />

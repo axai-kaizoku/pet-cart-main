@@ -1,0 +1,40 @@
+.profile-card {
+	width: fit-content;
+	height: 55vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+}
+
+.profile-card .profile-cover-img img {
+	width: 920px;
+	height: 180px;
+	object-fit: cover;
+	object-position: top;
+	border-radius: 5px;
+}
+
+.profile-card .profile-user-img {
+	display: flex;
+	flex-direction: row;
+}
+
+.profile-card .profile-user-img img {
+	width: 180px;
+	height: 180px;
+	border-radius: 50%;
+	position: absolute;
+	top: 8rem;
+	left: 2rem;
+}
+
+.profile-user-img .profile-details {
+	margin-left: 21rem;
+	margin-top: -11rem;
+}
+
+.profile-details #created {
+	margin-left: 25rem;
+	font-size: 0.84rem;
+}

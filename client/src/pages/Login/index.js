@@ -5,12 +5,14 @@ import toast from 'react-hot-toast';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [auth, setAuth] = useAuth();
-
+	const [load, setLoad] = useLoad();
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -18,8 +20,9 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const res = await axios.post('/api/v1/auth/login', { email, password });
-
+			setLoad(false);
 			if (res && res.data.success) {
 				toast.success(res.data && res.data.message);
 
@@ -37,11 +40,13 @@ const Login = () => {
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong!');
+			setLoad(false);
 		}
 	};
 
 	return (
 		<Layout title="Login">
+			<Loading isLoading={load} />
 			<div className="login-container">
 				<h1>Login</h1>
 				<form onClick={handleSubmit}>

@@ -10,6 +10,8 @@ import CartSingleItem from '../../components/CartSingleItem';
 import DropIn from 'braintree-web-drop-in-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const Cart = () => {
 	const [auth, setAuth] = useAuth();
@@ -17,6 +19,8 @@ const Cart = () => {
 	const [clientToken, setClientToken] = useState('');
 	const [instance, setInstance] = useState('');
 	const [loading, setLoading] = useState(false);
+
+	const [load, setLoad] = useLoad();
 	const navigate = useNavigate();
 
 	const totalPrice = () => {
@@ -31,29 +35,36 @@ const Cart = () => {
 			});
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 
 	// delete item
 	const removeCartItem = (pid) => {
 		try {
+			setLoad(true);
 			let myCart = [...cart];
 			let index = myCart.findIndex((item) => item._id === pid);
 			myCart.splice(index, 1);
 			setCart(myCart);
 			localStorage.setItem('cart', JSON.stringify(myCart));
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 
 	// get payment gateway token
 	const getToken = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/product/braintree/token');
 			setClientToken(data?.clientToken);
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 
@@ -64,6 +75,7 @@ const Cart = () => {
 	// handle payment
 	const handlePayment = async () => {
 		try {
+			setLoad(true);
 			setLoading(true);
 			const { nonce } = await instance.requestPaymentMethod();
 			const { data } = await axios.post('/api/v1/product/braintree/payment', {
@@ -73,16 +85,19 @@ const Cart = () => {
 			setLoading(false);
 			localStorage.removeItem('cart');
 			setCart([]);
+			setLoad(false);
 			navigate('/profile/user/orders');
 			toast.success('Payment completed successfully!');
 		} catch (error) {
 			console.log(error);
 			setLoading(false);
+			setLoad(false);
 		}
 	};
 
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="cart">
 				<div className="cart-container">
 					<>
@@ -133,7 +148,7 @@ const Cart = () => {
 								<span>{totalPrice()}</span>
 							</div>
 							<div className="cart-btns">
-								{clientToken ? (
+								{clientToken && auth?.token ? (
 									<div className="mt-2">
 										<div
 											style={
@@ -169,22 +184,6 @@ const Cart = () => {
 									</Link>
 								)}
 							</div>
-							{/* <div className="mt-2">
-								<DropIn
-									options={{
-										authorization: clientToken,
-										paypal: {
-											flow: 'vault',
-										},
-									}}
-									onInstance={(instance) => setInstance(instance)}
-								/>
-								<button
-									className="btn btn-primary"
-									onClick={handlePayment}>
-									Make Payment
-								</button>
-							</div> */}
 						</div>
 					</>
 				</div>

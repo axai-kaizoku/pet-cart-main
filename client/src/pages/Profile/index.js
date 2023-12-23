@@ -5,6 +5,8 @@ import { useAuth } from '../../context/auth';
 import UserMenu from '../../components/UserMenu';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const Profile = () => {
 	const [firstName, setFname] = useState('');
@@ -14,6 +16,7 @@ const Profile = () => {
 	const [address, setAddress] = useState('');
 	const [password, setPassword] = useState('');
 	const [auth, setAuth] = useAuth();
+	const [load, setLoad] = useLoad();
 
 	// get user data
 	useEffect(() => {
@@ -29,6 +32,7 @@ const Profile = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			const { data } = await axios.put('/api/v1/auth/update-profile', {
 				firstName,
 				lastName,
@@ -37,8 +41,11 @@ const Profile = () => {
 				address,
 				password,
 			});
+			setLoad(false);
+
 			if (data?.error) {
 				toast.error(data?.error);
+				setLoad(false);
 			} else {
 				setAuth({ ...auth, user: data?.updatedUser });
 				let ls = localStorage.getItem('auth');
@@ -46,15 +53,18 @@ const Profile = () => {
 				ls.user = data.updatedUser;
 				localStorage.setItem('auth', JSON.stringify(ls));
 				toast.success('Profile updated Successfully!');
+				setLoad(false);
 			}
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong');
+			setLoad(false);
 		}
 	};
 
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="container-fluid m-3 p-3">
 				<div className="row">
 					<div className="col-md-3">

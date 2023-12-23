@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.css';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
 import { useAuth } from '../../context/auth';
 import useCategory from '../../hooks/useCategory';
 import { Link } from 'react-router-dom';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 import dog from '../../assets/categories/dogs/dog.jpeg';
 import cat from '../../assets/categories/cats/cat.jpeg';
@@ -68,6 +70,7 @@ const brands = [
 
 const Home = () => {
 	const [auth, setAuth] = useAuth();
+	const [load, setLoad] = useLoad();
 	const category = useCategory();
 
 	category.map((c) => {
@@ -88,10 +91,18 @@ const Home = () => {
 		}
 	});
 
+	useEffect(() => {
+		setLoad(true);
+		const timer = setTimeout(() => {
+			setLoad(false);
+		}, 1500);
+		return () => clearTimeout(timer);
+	}, []);
+
 	return (
 		<Layout title="Home">
 			<Banner />
-
+			<Loading isLoading={load} />
 			<div className="categories">
 				<div className="category-container">
 					<div className="category-heading">

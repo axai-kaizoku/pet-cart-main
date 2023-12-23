@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../context/cart';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 // import ScrollCart from '../../components/ScrollCart';
 // import ReviewCard from '../../components/ReviewCard';
@@ -27,7 +29,7 @@ import toast from 'react-hot-toast';
 // });
 
 const ProductDetails = () => {
-	const auth = true;
+	const [load, setLoad] = useLoad();
 	const reviews = [];
 	const params = useParams();
 	const [cart, setCart] = useCart();
@@ -45,16 +47,20 @@ const ProductDetails = () => {
 	// get product func
 	const getProduct = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get(
 				`/api/v1/product/get-product/${params.slug}`,
 			);
 			setProduct(data?.product);
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
+			setLoad(false);
 		}
 	};
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="product-details">
 				{/* <ScrollCart /> */}
 				<div className="inner-container">

@@ -4,27 +4,34 @@ import AdminMenu from '../../components/AdminMenu';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Loading from '../../components/Loading';
+import { useLoad } from '../../context/load';
 
 const Products = () => {
 	const [products, setProducts] = useState([]);
+	const [load, setLoad] = useLoad();
 
 	//get all products
 	const getAllProducts = async () => {
 		try {
+			setLoad(true);
 			const { data } = await axios.get('/api/v1/product/get-products');
 			setProducts(data.products);
+			setLoad(false);
 		} catch (error) {
 			console.log(error);
 			toast.error('Something went wrong');
+			setLoad(false);
 		}
 	};
 
 	useEffect(() => {
 		getAllProducts();
-	}, [products]);
+	}, []);
 
 	return (
 		<Layout>
+			<Loading isLoading={load} />
 			<div className="container-fluid m-1.6 p-3">
 				<div className="row">
 					<div className="col-md-3">
