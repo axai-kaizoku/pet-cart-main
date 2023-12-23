@@ -13,6 +13,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"bcrypt": "^5.1.0",
+		"braintree": "^3.20.0",
 		"colors": "^1.4.0",
 		"concurrently": "^8.2.2",
 		"cors": "^2.8.5",

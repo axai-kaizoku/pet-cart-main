@@ -31,7 +31,9 @@ const SearchInput = () => {
 					placeholder="Search"
 					aria-label="Search"
 					value={values.keyword}
-					onChange={(e) => setValues({ ...values, keyword: e.target.value })}
+					onChange={(e) => {
+						setValues({ ...values, keyword: e.target.value });
+					}}
 				/>
 				<button
 					className="btn btn-outline-success m-2"
