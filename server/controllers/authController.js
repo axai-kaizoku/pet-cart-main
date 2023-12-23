@@ -1,5 +1,6 @@
 const { hashPassword, comparePassword } = require('../helpers/authHelpers');
 const userModel = require('../models/userModel');
+const orderModel = require('../models/orderModel');
 
 const JWT = require('jsonwebtoken');
 
@@ -206,10 +207,83 @@ const updateProfileController = async (req, res) => {
 	}
 };
 
+const getOrdersController = async (req, res) => {
+	try {
+		const orders = await orderModel
+			.find({ buyer: req.user._id })
+			.populate('products')
+			.sort({ createdAt: '-1' });
+		res.json(orders);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send({
+			success: false,
+			message: 'Error while fetching orders',
+			error,
+		});
+	}
+};
+
+const getAllOrdersController = async (req, res) => {
+	try {
+		const orders = await orderModel
+			.find({})
+			.populate('products')
+			.populate('buyer', 'firstName')
+			.sort({ createdAt: '-1' });
+		res.json(orders);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send({
+			success: false,
+			message: 'Error while fetching all orders',
+			error,
+		});
+	}
+};
+
+const orderStatusController = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const { status } = req.body;
+		const order = await orderModel.findByIdAndUpdate(
+			id,
+			{ status },
+			{ new: true },
+		);
+		res.json(order);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send({
+			success: false,
+			message: 'Error while changing order status',
+			error,
+		});
+	}
+};
+
+const getAllUsersController = async (req, res) => {
+	try {
+		const users = await userModel.find({});
+		res.json(users);
+	} catch (error) {
+		console.log(error);
+		res.status(500).send({
+			success: false,
+			message: 'Error while fetching all users',
+			error,
+		});
+	}
+};
+
 module.exports = {
 	sigupController,
 	loginController,
 	testController,
 	forgotPasswordController,
 	updateProfileController,
+	getOrdersController,
+	getAllOrdersController,
+	orderStatusController,
+	getAllUsersController,
 };

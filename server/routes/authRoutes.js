@@ -5,6 +5,11 @@ const {
 	testController,
 	forgotPasswordController,
 	updateProfileController,
+	getOrdersController,
+	getAllOrdersController,
+	orderStatusController,
+	getAllUsersController,
+	userRoleController,
 } = require('../controllers/authController');
 const { requireSignIn, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -34,6 +39,18 @@ router.get('/admin', requireSignIn, isAdmin, (req, res) => {
 
 // update profile
 router.put('/update-profile', requireSignIn, updateProfileController);
+
+// orders
+router.get('/orders', requireSignIn, getOrdersController);
+
+// all orders
+router.get('/all-orders', requireSignIn, isAdmin, getAllOrdersController);
+
+// order status change
+router.put('/order-status/:id', requireSignIn, isAdmin, orderStatusController);
+
+// all users
+router.get('/users', requireSignIn, isAdmin, getAllUsersController);
 
 // Test Route
 router.get('/test', requireSignIn, isAdmin, testController);
