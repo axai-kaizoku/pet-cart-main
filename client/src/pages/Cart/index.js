@@ -135,18 +135,26 @@ const Cart = () => {
 							<div className="cart-btns">
 								{clientToken ? (
 									<div className="mt-2">
-										<DropIn
-											options={{
-												authorization: clientToken,
-												paypal: {
-													flow: 'vault',
-												},
-											}}
-											onInstance={(instance) => setInstance(instance)}
-										/>
+										<div
+											style={
+												cart?.length > 0 ? { display: '' } : { display: 'none' }
+											}>
+											<DropIn
+												options={{
+													authorization: clientToken,
+													paypal: {
+														flow: 'vault',
+													},
+													googlePay: {},
+												}}
+												onInstance={(instance) => setInstance(instance)}
+												id="dropin-payment"
+											/>
+										</div>
 										<button
 											className="btn btn-primary"
-											onClick={handlePayment}>
+											onClick={handlePayment}
+											disabled={cart?.length > 0 ? '' : 'true'}>
 											Make Payment
 										</button>
 									</div>
