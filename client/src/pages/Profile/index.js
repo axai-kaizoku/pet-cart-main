@@ -73,7 +73,7 @@ const Profile = () => {
 					<div className="col-md-9">
 						<div className="update-container">
 							<h1>Update Profile</h1>
-							<form onClick={handleSubmit}>
+							<form onSubmit={handleSubmit}>
 								<>
 									<div className="mb-3">
 										<input

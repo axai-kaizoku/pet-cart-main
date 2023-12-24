@@ -90,3 +90,26 @@
 	text-align: center;
 	padding: 3rem;
 }
+
+@media screen and (max-width: 550px) {
+	.cart {
+		width: 100%;
+		height: fit-content;
+	}
+
+	.cart-container {
+		margin: 2rem 0rem;
+		display: flex;
+		flex-flow: column;
+	}
+
+	.cart-container .cart-left {
+		width: 100%;
+	}
+	.cart-container .cart-left .cart-items {
+		padding: 1rem;
+	}
+	.cart-container .cart-right {
+		width: 100%;
+	}
+}

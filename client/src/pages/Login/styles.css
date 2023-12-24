@@ -23,3 +23,16 @@
 .login-container form {
 	/* width: 20%; */
 }
+
+@media screen and (max-width: 550px) {
+	.form-outer-divs {
+		width: 100%;
+	}
+
+	.login-container {
+		width: 100%;
+	}
+	.login-container form {
+		width: 80%;
+	}
+}

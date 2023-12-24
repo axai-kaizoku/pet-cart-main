@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './index.css';
+import './styles.css';
 import { Link } from 'react-router-dom';
 
 const CartSingleItem = ({ item, handleRemove }) => {

@@ -23,3 +23,20 @@
 .signup-container form {
 	width: 70%;
 }
+
+@media screen and (max-width: 550px) {
+	.form-outer-divs {
+		width: 100%;
+	}
+
+	.form-outer-divs .signup-container h1 {
+		margin: 1rem;
+	}
+
+	.signup-container {
+		width: 100%;
+	}
+	.signup-container form {
+		width: 80%;
+	}
+}

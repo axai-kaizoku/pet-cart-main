@@ -133,7 +133,7 @@ const Cart = () => {
 
 							<Link
 								to="/store"
-								id="continue-shopping">
+								id="continue-shopping link">
 								<i>Continue Shopping</i>
 							</Link>
 						</div>
@@ -166,12 +166,14 @@ const Cart = () => {
 												id="dropin-payment"
 											/>
 										</div>
-										<button
-											className="btn btn-primary"
-											onClick={handlePayment}
-											disabled={cart?.length > 0 ? '' : 'true'}>
-											Make Payment
-										</button>
+										<div className="mb-1 text-center">
+											<button
+												className="btn btn-primary"
+												onClick={handlePayment}
+												disabled={cart?.length > 0 ? '' : 'true'}>
+												Make Payment
+											</button>
+										</div>
 									</div>
 								) : (
 									<Link

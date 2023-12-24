@@ -75,3 +75,18 @@
 	/* height: fit-content; */
 	/* border: 1px solid black; */
 }
+
+@media screen and (max-width: 550px) {
+	.cart-single-item {
+		padding: 0rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		width: 100%;
+		gap: 0rem;
+	}
+
+	.cart-single-item .product-details {
+		width: fit-content;
+	}
+}
