@@ -15,7 +15,11 @@ const Banner = () => {
 						food to toys to grooming supplies.
 					</p>
 					<Link to="/store">
-						<button className="btn btn-primary">Shop Now</button>
+						<button
+							id="banner-store-btn"
+							className="btn btn-outline-primary">
+							Shop Now
+						</button>
 					</Link>
 				</div>
 				<div className="banner-img">

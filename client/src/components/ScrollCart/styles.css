@@ -1,0 +1,8 @@
+.scroll-cart {
+	margin: 0px;
+	top: auto;
+	right: 100px;
+	bottom: 80px;
+	left: auto;
+	position: fixed;
+}

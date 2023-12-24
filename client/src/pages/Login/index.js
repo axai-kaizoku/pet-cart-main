@@ -47,57 +47,68 @@ const Login = () => {
 	return (
 		<Layout title="Login">
 			<Loading isLoading={load} />
-			<div className="login-container">
-				<h1>Login</h1>
-				<form onClick={handleSubmit}>
-					<div className="mb-3">
-						<input
-							type="email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							className="form-control"
-							id="exampleInputEmail1"
-							placeholder="Enter Your Email Address"
-							required
-						/>
-					</div>
+			<div className="form-outer-divs">
+				<div className="login-container">
+					<h1>Login</h1>
+					<form onSubmit={handleSubmit}>
+						<div className="mb-3">
+							<input
+								type="email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								className="form-control"
+								id="exampleInputEmail1"
+								placeholder="Enter Your Email Address"
+								required
+							/>
+						</div>
 
-					<div className="mb-3">
-						<input
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							className="form-control"
-							id="exampleInputPassword1"
-							placeholder="Enter Your Password"
-							required
-						/>
-					</div>
-					<div className="mb-3">
-						<p
-							onClick={() => {
-								navigate('/forgot-password');
-							}}
-							style={{ cursor: 'pointer' }}>
-							Forgot Password
-						</p>
-					</div>
-					<div className="mb-3">
-						<p>
-							Don't have an account?
-							<Link
-								id="link"
-								to="/signup">
-								Signup
-							</Link>
-						</p>
-					</div>
-					<button
-						type="submit"
-						className="btn btn-primary">
-						Login
-					</button>
-				</form>
+						<div className="mb-3">
+							<input
+								type="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								className="form-control"
+								id="exampleInputPassword1"
+								placeholder="Enter Your Password"
+								required
+							/>
+						</div>
+
+						<div className="mb-3">
+							<p>
+								Don't have an account?{' '}
+								<Link
+									id="link"
+									to="/signup">
+									<span style={{ color: 'red' }}>Signup</span>
+								</Link>
+							</p>
+						</div>
+						<div className="mb-3">
+							<p style={{ fontSize: '0.8rem' }}>
+								Demo account: demo@example.com / password: demo123
+							</p>
+						</div>
+						<div className="mb-3 text-center">
+							<button
+								type="submit"
+								className="btn btn-primary ">
+								Login
+							</button>
+						</div>
+						<div className="mb-3">
+							<p
+								onClick={() => {
+									navigate('/forgot-password');
+								}}
+								style={{ cursor: 'pointer', fontSize: '0.7rem' }}
+								className="text-center">
+								Forgot Password
+							</p>
+						</div>
+					</form>
+				</div>
 			</div>
 		</Layout>
 	);

@@ -24,6 +24,11 @@
 	width: fit-content;
 }
 
+.banner-content h1 {
+	font-weight: 900;
+	font-size: 5rem;
+}
+
 .banner-content button {
 	padding: 1rem 2rem;
 	margin: 0rem 1rem;
@@ -40,6 +45,36 @@
 @media screen and (max-width: 550px) {
 	.inner-container {
 		display: flex;
+		flex-direction: column-reverse;
+		margin-top: 20rem;
+	}
+
+	.banner-img img {
+		width: 100%;
+		margin-left: 0rem;
+		padding: 2rem;
+		margin-top: 8rem;
+	}
+
+	.banner-content {
+		display: flex;
 		flex-direction: column;
+		margin: 2rem 4rem;
+		justify-content: space-around;
+	}
+	.banner-content h1 {
+		margin: 0.9rem;
+	}
+
+	.banner-content h2 {
+		margin: 1rem;
+	}
+
+	.banner-content p {
+		margin: 1rem;
+	}
+
+	.banner-content #banner-store-btn {
+		margin: 2rem;
 	}
 }

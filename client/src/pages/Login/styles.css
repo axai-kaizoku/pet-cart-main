@@ -1,12 +1,25 @@
+.form-outer-divs {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* border: 2px solid black; */
+	padding: 2rem;
+}
+
 .login-container {
-	/* width: 50%; */
-	height: 70vh;
+	width: 40%;
+	height: 80vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background-color: aliceblue;
+	border-radius: 0.5rem;
 }
 
 .login-container form {
-	width: 20%;
+	/* width: 20%; */
 }

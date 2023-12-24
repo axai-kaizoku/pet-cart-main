@@ -4,6 +4,7 @@ import { useSearch } from '../../context/search';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/cart';
 import toast from 'react-hot-toast';
+import ScrollCart from '../../components/ScrollCart';
 
 const Search = () => {
 	const [values, setValues] = useSearch();
@@ -11,6 +12,7 @@ const Search = () => {
 
 	return (
 		<Layout title={'Search results'}>
+			<ScrollCart length={cart?.length} />
 			<div className="container">
 				<div className="text-center">
 					<h1>Search Resuts</h1>
@@ -19,7 +21,7 @@ const Search = () => {
 							? 'No Products Found'
 							: `Found ${values?.results.length}`}
 					</h6>
-					<div className="d-flex flex-wrap mt-4">
+					<div className="product-list-inner">
 						{values?.results.map((item) => (
 							<>
 								<div
@@ -47,7 +49,7 @@ const Search = () => {
 									</div>
 									<div className="product-lower">
 										<button
-											className="btn btn-secondary"
+											className="btn btn-primary"
 											onClick={() => {
 												setCart([...cart, item]);
 												localStorage.setItem(

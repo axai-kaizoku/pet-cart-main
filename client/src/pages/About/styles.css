@@ -1,0 +1,49 @@
+.about-page {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+}
+
+.about-page img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	background-position: center;
+}
+
+.overlay-text {
+	position: absolute;
+	top: 20%;
+	left: 10%;
+}
+
+.overlay-text h1 {
+	margin-left: 1rem;
+	font-weight: 700;
+}
+
+.site-desc h2 {
+	margin-left: 1rem;
+}
+
+.about-page-content .site-desc p {
+	width: 69%;
+	margin-left: 0.5rem;
+}
+
+.about-page-content .personal-info a {
+	color: black;
+	margin: 1rem;
+	font-size: 0.8rem;
+}
+
+@media screen and (max-width: 550px) {
+	.about-page-content .personal-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.about-page {
+		height: 120vh;
+	}
+}

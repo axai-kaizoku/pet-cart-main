@@ -6,10 +6,13 @@ import axios from 'axios';
 import SearchInput from '../../components/SearchInput';
 import Loading from '../../components/Loading';
 import { useLoad } from '../../context/load';
+import { useCart } from '../../context/cart';
+import ScrollCart from '../../components/ScrollCart';
+import toast from 'react-hot-toast';
 
 const CategoryProducts = () => {
 	const [products, setProducts] = useState([]);
-
+	const [cart, setCart] = useCart();
 	const params = useParams();
 	const [load, setLoad] = useLoad();
 
@@ -45,21 +48,22 @@ const CategoryProducts = () => {
 			<div className="store">
 				<div className="store-container">
 					<div className="store-search">
+						<ScrollCart length={cart?.length} />
 						<SearchInput />
 					</div>
 				</div>
 				<div className="store-area">
 					<div className="categories-card">
 						<div className="categories-card-inner">
-							<h2>Categories</h2>
+							<h2>Category</h2>
 
 							<ul>
 								<li>{convertToTitleCase(params?.slug)}</li>
 							</ul>
 							<Link
-								id="back-btn"
+								id="link-back-btn"
 								to="/store">
-								Back
+								<p>Back</p>
 							</Link>
 						</div>
 					</div>
@@ -90,7 +94,18 @@ const CategoryProducts = () => {
 											</div>
 										</div>
 										<div className="product-lower">
-											<button>Add To Cart</button>
+											<button
+												className="btn btn-primary"
+												onClick={() => {
+													setCart([...cart, item]);
+													localStorage.setItem(
+														'cart',
+														JSON.stringify([...cart, item]),
+													);
+													toast.success('Item added to cart');
+												}}>
+												Add To Cart
+											</button>
 										</div>
 									</div>
 								</>

@@ -113,7 +113,7 @@ const Cart = () => {
 								}>
 								<div className="cart-headings-lower">
 									<h6>Product Details</h6>
-									<h6>Quantity</h6>
+									{/* <h6>Quantity</h6> */}
 									<h6>Total</h6>
 								</div>
 								<hr />
@@ -178,7 +178,7 @@ const Cart = () => {
 										to="/login"
 										state="/cart"
 										id="login-checkout-btn">
-										<button className="login-checkout-btn">
+										<button className="login-checkout-btn btn btn-primary">
 											Login to Checkout
 										</button>
 									</Link>

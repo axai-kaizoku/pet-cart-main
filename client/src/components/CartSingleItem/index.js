@@ -25,7 +25,7 @@ const CartSingleItem = ({ item, handleRemove }) => {
 					<button onClick={() => handleRemove(item._id)}>Remove</button>
 				</div>
 			</div>
-			<div className="quantity">
+			{/* <div className="quantity">
 				<div
 					onClick={(e) => {
 						e.preventDefault();
@@ -44,7 +44,7 @@ const CartSingleItem = ({ item, handleRemove }) => {
 					}}>
 					+
 				</div>
-			</div>
+			</div> */}
 			<span className="price">${item.price}</span>
 		</div>
 	);

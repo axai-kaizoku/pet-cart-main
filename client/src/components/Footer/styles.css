@@ -1,10 +1,12 @@
 .footer {
 	width: 100%;
 	height: fit-content;
-	background-color: aliceblue;
+	background-color: #1d4ed8;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	color: white;
+
 	/* align-items: center; */
 }
 
@@ -18,7 +20,7 @@
 }
 
 a {
-	color: black;
+	color: white;
 	text-decoration: none;
 }
 
@@ -54,6 +56,9 @@ hr {
 }
 
 @media screen and (max-width: 550px) {
+	.footer {
+		height: 12rem;
+	}
 	.footer-links {
 		margin: 1rem 0;
 	}

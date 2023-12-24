@@ -10,6 +10,7 @@ import { useCart } from '../../context/cart';
 import toast from 'react-hot-toast';
 import Loading from '../../components/Loading';
 import { useLoad } from '../../context/load';
+import ScrollCart from '../../components/ScrollCart';
 
 const Store = () => {
 	const [products, setProducts] = useState([]);
@@ -88,6 +89,7 @@ const Store = () => {
 			<div className="store">
 				<div className="store-container">
 					<div className="store-search">
+						<ScrollCart length={cart?.length} />
 						<SearchInput />
 					</div>
 				</div>
@@ -95,22 +97,24 @@ const Store = () => {
 					<div className="categories-card">
 						<div className="categories-card-inner">
 							<h2>Categories</h2>
-							<ul>
-								{categories?.map((c) => (
-									<li key={c._id}>
-										<Link
-											id="link"
-											to={`/store/category/${c.slug}`}>
-											{c.name}
-										</Link>
-									</li>
-								))}
-							</ul>
-							<Link
-								id="back-btn"
-								to="/">
-								Back
-							</Link>
+							<div>
+								<ul>
+									{categories?.map((c) => (
+										<li key={c._id}>
+											<Link
+												id="link"
+												to={`/store/category/${c.slug}`}>
+												{c.name}
+											</Link>
+										</li>
+									))}
+								</ul>
+								<Link
+									id="link-back-btn"
+									to="/">
+									Back
+								</Link>
+							</div>
 						</div>
 					</div>
 					<div className="product-list">
@@ -132,16 +136,18 @@ const Store = () => {
 													<span>Price:</span>
 													<p>${item.price}</p>
 												</div>
-												<Link
-													id="product-name"
-													to={`/product/${item.slug}`}>
-													{item.name}
-												</Link>
+												<div className="product-name">
+													<Link
+														id="product-name"
+														to={`/product/${item.slug}`}>
+														{item.name}
+													</Link>
+												</div>
 											</div>
 										</div>
 										<div className="product-lower">
 											<button
-												className="btn btn-secondary"
+												className="btn btn-primary"
 												onClick={() => {
 													setCart([...cart, item]);
 													localStorage.setItem(
@@ -160,7 +166,7 @@ const Store = () => {
 						<div className="m-2 p-3">
 							{products && products.length < total && (
 								<button
-									className="btn btn-warning"
+									className="btn btn-outline-primary"
 									onClick={(e) => {
 										e.preventDefault();
 										setPage(page + 1);

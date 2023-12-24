@@ -9,6 +9,8 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	background-color: aliceblue;
+	margin: 2rem;
 }
 
 .product-details .inner-container section {
@@ -26,6 +28,8 @@
 
 .inner-container .left-container #back-to-cart-btn {
 	text-decoration: none;
+	height: fit-content;
+	color: black;
 	font-size: 1.1rem;
 }
 
@@ -38,7 +42,7 @@
 }
 
 .inner-container .right-container {
-	width: 40%;
+	width: 60%;
 	padding: 1rem 2rem;
 }
 
@@ -90,8 +94,8 @@
 }
 
 .right-lower-container-price .product-price {
-	font-size: 1.8rem;
-	font-weight: 600;
+	font-size: 1.7rem;
+	font-weight: 750;
 }
 
 .right-lower-container-price .add-to-cart-btn {
@@ -107,59 +111,41 @@
 	cursor: pointer;
 }
 
-.product-reviews-div {
-	display: flex;
-	flex-direction: row;
-}
+@media screen and (max-width: 550px) {
+	.product-details .inner-container section {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding: 1rem;
+	}
 
-.product-review-section {
-	text-align: center;
-	margin: 1rem;
-}
+	.inner-container .left-container #back-to-cart-btn {
+		margin-bottom: 2rem;
+	}
 
-.reviews-section {
-	text-align: left;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
+	.product-details .inner-container section .left-container {
+		display: flex;
+		flex-direction: column;
+	}
 
-.give-product-rating-review {
-}
+	.product-details
+		.inner-container
+		section
+		.left-container
+		.product-detail-img-div
+		img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		background-position: center;
+		padding: 0.3rem;
+	}
 
-.rating-div {
-}
+	.product-detail-img-div {
+		width: 70vw;
+	}
 
-.rating-modal {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
-}
-
-.rating-modal-inner {
-	background-color: whitesmoke;
-	width: 25%;
-	height: 40%;
-	text-align: center;
-	border-radius: 0.5rem;
-	padding: 1rem;
-}
-
-.rating-modal-inner .review-btns {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-	padding: 1.2rem;
-}
-
-.rating-modal-inner .review-btns button {
-	padding: 0.5rem 0.4rem;
-	margin: 0rem 0.2rem;
-}
-
-.rating-modal-inner textarea {
-	font-size: 1rem;
+	.product-details .inner-container section .right-container {
+		width: 100%;
+	}
 }

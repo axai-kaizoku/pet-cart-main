@@ -36,7 +36,7 @@ const SearchInput = () => {
 					}}
 				/>
 				<button
-					className="btn btn-outline-success m-2"
+					className="btn btn-outline-primary m-2"
 					type="submit">
 					Search
 				</button>

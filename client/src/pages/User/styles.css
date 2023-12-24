@@ -38,3 +38,43 @@
 	margin-left: 25rem;
 	font-size: 0.84rem;
 }
+
+@media screen and (max-width: 550px) {
+	.profile-card .profile-cover-img img {
+		display: none;
+		width: 0px;
+		height: 0px;
+	}
+
+	.profile-card {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		width: fit-content;
+		height: fit-content;
+	}
+
+	.profile-user-img {
+		display: none;
+	}
+
+	.profile-card .profile-user-img img {
+		display: none;
+	}
+
+	.profile-user-img .profile-details {
+		margin-left: 0rem;
+		margin-top: 0rem;
+		margin: 1rem;
+		padding: 1rem;
+	}
+
+	.profile-details h6 {
+		padding: 1rem;
+	}
+
+	.profile-details #created {
+		margin-left: 12rem;
+		font-size: 0.84rem;
+	}
+}

@@ -21,7 +21,7 @@ const Layout = ({ children, title = '' }) => {
 				<meta
 					name="author"
 					content="axai-kaizoku"></meta>
-				<title>PetCart {`| ${title}`}</title>
+				<title>PetCart</title>
 			</Helmet>
 			<Header />
 			<main style={{ minHeight: '100vh' }}>

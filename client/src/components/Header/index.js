@@ -5,7 +5,7 @@ import logo from '../../assets/logo/logo512.png';
 import { useAuth } from '../../context/auth';
 import toast from 'react-hot-toast';
 import { useCart } from '../../context/cart';
-import { Badge } from 'antd';
+import { Badge } from '@mui/material';
 
 const Header = () => {
 	const [auth, setAuth] = useAuth();
@@ -19,23 +19,10 @@ const Header = () => {
 		localStorage.removeItem('auth');
 		toast.success('Logout Success!');
 	};
-	// const currentPath = window.location.pathname;
-	// const currentPathName = currentPath.split('/')[1];
-
-	// useEffect(() => {
-	//   if (currentPathName === '') {
-	//     dispatch(updateCurrentPage('Home'));
-	//     document.title = 'ProPet | Home';
-	//     return;
-	//   }
-	//   const currentPage =
-	//     currentPathName.charAt(0).toUpperCase() + currentPathName.slice(1);
-	//   dispatch(updateCurrentPage(currentPage));
-
-	//   document.title = `ProPet | ${currentPage}`;
-	// }, [currentPathName, dispatch]);
-
-	// const cart = [1, 2, 3, 4];
+	const currentPath = window.location.pathname;
+	const currentPathName = currentPath.split('/')[1];
+	console.log(currentPath);
+	console.log(currentPathName);
 
 	return (
 		<>
@@ -50,7 +37,6 @@ const Header = () => {
 									src={logo}
 									alt="logo"
 								/>
-								<p>PetCart</p>
 							</div>
 						</NavLink>
 					</div>
@@ -104,10 +90,10 @@ const Header = () => {
 								to="/cart"
 								id="navLink">
 								<Badge
-									count={cart?.length}
+									badgeContent={cart?.length}
 									size="small"
-									color="blue">
-									<p className="mt-1 mr-1 p-0">Cart</p>
+									color="primary">
+									Cart
 								</Badge>
 							</NavLink>
 						</li>

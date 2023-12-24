@@ -7,7 +7,9 @@ const Footer = () => {
 		<div className="footer">
 			<div className="footer-below">
 				<div className="footer-copyright">
-					<p>CopyRights Reserved &copy; Akshay</p>
+					<p>
+						&copy; {new Date().getFullYear()} PetCart™. All Rights Reserved.
+					</p>
 				</div>
 				<div className="footer-below-links">
 					<Link to="/about">

@@ -1,0 +1,136 @@
+.contactContainer {
+	width: 100vw;
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 4vmax;
+}
+
+.contactBox {
+	background-color: aliceblue;
+	width: 40vw;
+	height: 75vh;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.mapBox {
+	width: 40vw;
+	height: 75vh;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.contactHeading {
+	text-align: center;
+	color: #404658;
+	font: 400 1.3vmax 'Roboto';
+	padding: 1.3vmax;
+	border-bottom: 1px solid #404658;
+	width: 50%;
+	margin: auto;
+}
+
+.contactForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
+	padding: 2vmax;
+	justify-content: space-evenly;
+	height: 80%;
+	transition: all 0.5s;
+}
+
+.contactForm > div {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.contactForm > div > input,
+.contactForm > div > select {
+	padding: 1vmax 4vmax;
+	padding-right: 1vmax;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid #404658;
+	background-color: #becdd7;
+	border-radius: 4px;
+	font: 300 0.9vmax cursive;
+	outline: none;
+}
+.contactForm > div > svg {
+	position: absolute;
+	transform: translateX(1vmax);
+	font-size: 1.6vmax;
+	color: #404658;
+}
+
+.contactBtn {
+	border: none;
+	background-color: #404658;
+	color: white;
+	font: 300 1vmax 'Roboto';
+	width: 100%;
+	padding: 1vmax;
+	cursor: pointer;
+	transition: all 0.5s;
+	outline: none;
+	margin: 2vmax;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.508);
+}
+
+.contact-container {
+	width: 80%;
+}
+
+.contactBtn:hover {
+	background-color: #626a77;
+}
+@media screen and (max-width: 600px) {
+	.contactContainer {
+		width: 100vw;
+		max-width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-top: 4vmax;
+	}
+
+	.contactBox {
+		width: 96.5vw;
+		height: 95vh;
+	}
+
+	.mapBox {
+		width: 96.5vw;
+		height: 95vh;
+	}
+
+	.contactHeading {
+		font: 400 6vw cursive;
+		padding: 5vw;
+	}
+
+	.contactForm {
+		padding: 11vw;
+	}
+
+	.contactForm > div > input,
+	.contactForm > div > select {
+		padding: 5vw 10vw;
+		font: 300 4vw cursive;
+	}
+
+	.contactForm > div > svg {
+		font-size: 6vw;
+		transform: translateX(3vw);
+	}
+
+	.contactBtn {
+		font: 300 4vw cursive;
+		padding: 4vw;
+	}
+}
