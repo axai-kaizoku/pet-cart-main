@@ -46,9 +46,31 @@ nav {
 	padding: 0rem;
 }
 
-ul li {
-	padding: 0.2rem 2rem;
+.navbar ul li {
+	padding: 0.1rem 2rem;
 	margin-top: 1rem;
+	list-style: none;
+}
+
+.navbar ul li #navLink {
+	padding: 0.5rem 1rem;
+	border-radius: 0.2rem;
+}
+
+.navbar ul li .active {
+	background-color: #2a69e1;
+}
+
+.navbar ul li .logout {
+	background-color: transparent;
+}
+
+.navbar ul li #navLink:hover {
+	background-color: #2a69e1;
+	transition: background-color 0.3s ease;
+}
+
+ul li {
 	list-style: none;
 }
 
@@ -73,7 +95,7 @@ ul li {
 
 	.navbar ul li {
 		padding: 0.5rem;
-		margin: 0.6rem;
+		margin: 0.3rem;
 	}
 
 	.footer-links {

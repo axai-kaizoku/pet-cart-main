@@ -97,7 +97,7 @@ const Store = () => {
 					<div className="categories-card">
 						<div className="categories-card-inner">
 							<h2>Categories</h2>
-							<div>
+							<div style={{ height: 'fit-content' }}>
 								<ul>
 									{categories?.map((c) => (
 										<li key={c._id}>
@@ -111,7 +111,8 @@ const Store = () => {
 								</ul>
 								<Link
 									id="link-back-btn"
-									to="/">
+									to="/"
+									style={{ marginBottom: '5px' }}>
 									Back
 								</Link>
 							</div>

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './styles.css';
 import Layout from '../../components/Layout';
 import Banner from '../../components/Banner';
-import { useAuth } from '../../context/auth';
 import useCategory from '../../hooks/useCategory';
 import { Link } from 'react-router-dom';
 import Loading from '../../components/Loading';
@@ -69,7 +68,6 @@ const brands = [
 ];
 
 const Home = () => {
-	const [auth, setAuth] = useAuth();
 	const [load, setLoad] = useLoad();
 	const category = useCategory();
 
@@ -112,7 +110,8 @@ const Home = () => {
 						{category.map(({ name, img, slug }, index) => (
 							<Link
 								id="link"
-								to={`/store/category/${slug}`}>
+								to={`/store/category/${slug}`}
+								key={index}>
 								<div
 									key={index}
 									className="individual-category">

@@ -1,13 +1,15 @@
 import React from 'react';
 import './styles.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo/logo512.png';
 import { useAuth } from '../../context/auth';
 import toast from 'react-hot-toast';
 import { useCart } from '../../context/cart';
 import { Badge } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => {
+	const location = useLocation();
 	const [auth, setAuth] = useAuth();
 	const [cart] = useCart();
 	const handleLogout = () => {
@@ -19,10 +21,6 @@ const Header = () => {
 		localStorage.removeItem('auth');
 		toast.success('Logout Success!');
 	};
-	const currentPath = window.location.pathname;
-	const currentPathName = currentPath.split('/')[1];
-	console.log(currentPath);
-	console.log(currentPathName);
 
 	return (
 		<>
@@ -44,14 +42,16 @@ const Header = () => {
 						<li>
 							<NavLink
 								to="/"
-								id="navLink">
+								id="navLink"
+								className={location.pathname === '/' ? 'active' : ''}>
 								Home
 							</NavLink>
 						</li>
 						<li>
 							<NavLink
 								to="/store"
-								id="navLink">
+								id="navLink"
+								className={location.pathname === '/store' ? 'active' : ''}>
 								Store
 							</NavLink>
 						</li>
@@ -60,7 +60,8 @@ const Header = () => {
 								<li>
 									<NavLink
 										to="/login"
-										id="navLink">
+										id="navLink"
+										className={location.pathname === '/login' ? 'active' : ''}>
 										Login
 									</NavLink>
 								</li>
@@ -70,7 +71,10 @@ const Header = () => {
 								<li>
 									<NavLink
 										to={`/profile/${auth?.user?.role === 1 ? 'admin' : 'user'}`}
-										id="navLink">
+										id="navLink"
+										className={
+											location.pathname === '/profile' ? 'active' : ''
+										}>
 										Profile
 									</NavLink>
 								</li>
@@ -78,7 +82,8 @@ const Header = () => {
 									<NavLink
 										to="/"
 										onClick={handleLogout}
-										id="navLink">
+										id="navLink"
+										className="logout">
 										Logout
 									</NavLink>
 								</li>
@@ -88,12 +93,12 @@ const Header = () => {
 						<li>
 							<NavLink
 								to="/cart"
-								id="navLink">
+								id="navLink-cart">
 								<Badge
 									badgeContent={cart?.length}
 									size="small"
 									color="primary">
-									Cart
+									<ShoppingCartIcon />
 								</Badge>
 							</NavLink>
 						</li>

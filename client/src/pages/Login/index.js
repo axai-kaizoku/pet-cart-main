@@ -87,7 +87,7 @@ const Login = () => {
 						</div>
 						<div className="mb-3">
 							<p style={{ fontSize: '0.8rem' }}>
-								Demo account: demo@example.com / password: demo123
+								Demo account: demo@example.com / password: demo@123
 							</p>
 						</div>
 						<div className="mb-3 text-center">
