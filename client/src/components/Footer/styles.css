@@ -6,7 +6,7 @@
 	flex-direction: column;
 	justify-content: space-evenly;
 	color: white;
-
+	padding-top: 1rem;
 	/* align-items: center; */
 }
 

@@ -17,7 +17,7 @@ const Banner = () => {
 					<Link to="/store">
 						<button
 							id="banner-store-btn"
-							className="btn btn-outline-primary">
+							className="btn btn-primary">
 							Shop Now
 						</button>
 					</Link>
