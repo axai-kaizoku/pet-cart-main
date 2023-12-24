@@ -6,3 +6,10 @@
 	left: auto;
 	position: fixed;
 }
+
+@media screen and (max-width: 550px) {
+	.scroll-cart {
+		right: 20px;
+		bottom: 20px;
+	}
+}
