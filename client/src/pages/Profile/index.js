@@ -71,78 +71,80 @@ const Profile = () => {
 						<UserMenu />
 					</div>
 					<div className="col-md-9">
-						<div className="signup-container">
-							<h1>Update Profile</h1>
-							<form onSubmit={handleSubmit}>
-								<>
-									<div className="mb-3">
-										<input
-											type="text"
-											value={firstName}
-											onChange={(e) => setFname(e.target.value)}
-											className="form-control"
-											id="exampleInputEmail1"
-											placeholder="Enter Your First Name"
-										/>
-									</div>
-									<div className="mb-3">
-										<input
-											type="text"
-											value={lastName}
-											onChange={(e) => setLname(e.target.value)}
-											className="form-control"
-											id="exampleInputEmail1"
-											placeholder="Enter Your Last Name"
-										/>
-									</div>
-									<div className="mb-3">
-										<input
-											type="email"
-											value={email}
-											onChange={(e) => setEmail(e.target.value)}
-											className="form-control"
-											id="exampleInputEmail1"
-											placeholder="Enter Your Email Address"
-											disabled
-										/>
-									</div>
-									<div className="mb-3">
-										<input
-											type="text"
-											value={phone}
-											onChange={(e) => setPhone(e.target.value)}
-											className="form-control"
-											id="exampleInputEmail1"
-											placeholder="Enter Your Phone Number"
-										/>
-									</div>
-									<div className="mb-3">
-										<input
-											type="text"
-											value={address}
-											onChange={(e) => setAddress(e.target.value)}
-											className="form-control"
-											id="exampleInputEmail1"
-											placeholder="Enter Your Address"
-										/>
-									</div>
-									<div className="mb-3">
-										<input
-											type="password"
-											value={password}
-											onChange={(e) => setPassword(e.target.value)}
-											className="form-control"
-											id="exampleInputPassword1"
-											placeholder="Enter Your Password"
-										/>
-									</div>
-									<button
-										type="submit"
-										className="btn btn-primary">
-										Update
-									</button>
-								</>
-							</form>
+						<div className="form-outer-divs">
+							<div className="signup-container">
+								<h1>Update Profile</h1>
+								<form onSubmit={handleSubmit}>
+									<>
+										<div className="mb-3">
+											<input
+												type="text"
+												value={firstName}
+												onChange={(e) => setFname(e.target.value)}
+												className="form-control"
+												id="exampleInputEmail1"
+												placeholder="Enter Your First Name"
+											/>
+										</div>
+										<div className="mb-3">
+											<input
+												type="text"
+												value={lastName}
+												onChange={(e) => setLname(e.target.value)}
+												className="form-control"
+												id="exampleInputEmail1"
+												placeholder="Enter Your Last Name"
+											/>
+										</div>
+										<div className="mb-3">
+											<input
+												type="email"
+												value={email}
+												onChange={(e) => setEmail(e.target.value)}
+												className="form-control"
+												id="exampleInputEmail1"
+												placeholder="Enter Your Email Address"
+												disabled
+											/>
+										</div>
+										<div className="mb-3">
+											<input
+												type="text"
+												value={phone}
+												onChange={(e) => setPhone(e.target.value)}
+												className="form-control"
+												id="exampleInputEmail1"
+												placeholder="Enter Your Phone Number"
+											/>
+										</div>
+										<div className="mb-3">
+											<input
+												type="text"
+												value={address}
+												onChange={(e) => setAddress(e.target.value)}
+												className="form-control"
+												id="exampleInputEmail1"
+												placeholder="Enter Your Address"
+											/>
+										</div>
+										<div className="mb-3">
+											<input
+												type="password"
+												value={password}
+												onChange={(e) => setPassword(e.target.value)}
+												className="form-control"
+												id="exampleInputPassword1"
+												placeholder="Enter Your Password"
+											/>
+										</div>
+										<button
+											type="submit"
+											className="btn btn-primary">
+											Update
+										</button>
+									</>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

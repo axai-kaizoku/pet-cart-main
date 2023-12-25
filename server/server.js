@@ -6,6 +6,7 @@ const authRoutes = require('./routes/authRoutes');
 const cateogryRoutes = require('./routes/categoryRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cors = require('cors');
+const path = require('path');
 
 //configure dotenv
 dotenv.config();
@@ -20,6 +21,7 @@ const PORT = process.env.PORT || 3050;
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 //routes
 app.use('/api/v1/auth', authRoutes);
@@ -27,8 +29,8 @@ app.use('/api/v1/category', cateogryRoutes);
 app.use('/api/v1/product', productRoutes);
 
 // rest api
-app.get('/', (req, res) => {
-	res.send({ message: 'Hello App is live' });
+app.use('*', function (req, res) {
+	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.listen(PORT, () => {

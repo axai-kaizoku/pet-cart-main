@@ -1,10 +1,41 @@
-.update-container {
+.form-outer-divs {
 	display: flex;
+	width: 100%;
+	height: 100%;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	padding: 2rem;
 }
 
-.update-container form {
-	width: 30%;
+.signup-container {
+	width: 40%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 0.5rem;
+}
+
+.signup-container form {
+	width: 70%;
+}
+
+@media screen and (max-width: 550px) {
+	.form-outer-divs {
+		width: 100%;
+	}
+
+	.form-outer-divs .signup-container h1 {
+		margin: 1rem;
+	}
+
+	.signup-container {
+		width: 100%;
+	}
+	.signup-container form {
+		width: 80%;
+	}
 }
