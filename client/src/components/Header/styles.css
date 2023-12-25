@@ -86,6 +86,11 @@ ul li {
 		width: 100%;
 	}
 
+	.navbar-logo #logo-section .logo img {
+		width: 75px;
+		height: 75px;
+	}
+
 	.navbar ul {
 		display: flex;
 		flex-direction: row;

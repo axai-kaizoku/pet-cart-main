@@ -1,7 +1,8 @@
 .product-details {
 	width: 100%;
 	height: fit-content;
-	margin: 2rem 0rem;
+	margin: 0rem 0rem;
+	padding: 2rem 0rem;
 }
 
 .product-details .inner-container {
@@ -112,11 +113,18 @@
 }
 
 @media screen and (max-width: 550px) {
+	.product-details {
+		margin: 0rem;
+		width: 90%;
+	}
+	.product-details .inner-container {
+		width: 90%;
+	}
 	.product-details .inner-container section {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		padding: 1rem;
+		padding: 0.5rem;
 	}
 
 	.inner-container .left-container #back-to-cart-btn {

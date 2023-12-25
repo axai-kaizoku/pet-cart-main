@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import dogs from '../../assets/homepage/dogs.png';
 
 const Banner = () => {
@@ -14,13 +14,15 @@ const Banner = () => {
 						Find everything you need for your furry friend at PetCart - from
 						food to toys to grooming supplies.
 					</p>
-					<Link to="/store">
+					<NavLink
+						id="link"
+						to="/store">
 						<button
 							id="banner-store-btn"
 							className="btn btn-primary">
 							Shop Now
 						</button>
-					</Link>
+					</NavLink>
 				</div>
 				<div className="banner-img">
 					<img
