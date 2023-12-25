@@ -9,6 +9,9 @@ import { SearchProvider } from './context/search';
 import { CartProvider } from './context/cart';
 import { LoadProvider } from './context/load';
 import 'antd/dist/reset.css';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+
+if (process.env.NODE_ENV === 'producction') disableReactDevTools();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
