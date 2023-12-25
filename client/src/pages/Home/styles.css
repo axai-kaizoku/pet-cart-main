@@ -4,9 +4,6 @@
 	margin: 20px 0px;
 }
 
-.category-container {
-}
-
 .category-heading {
 	padding: 5px 40px;
 }
@@ -30,9 +27,6 @@ a {
 	color: black;
 }
 
-.individual-category {
-}
-
 .individual-category img {
 	border: 0.3rem solid aliceblue;
 	border-radius: 50%;
@@ -40,9 +34,6 @@ a {
 
 .individual-category img:hover {
 	transform: scale(0.95);
-}
-
-.brands-container {
 }
 
 .brand-heading {

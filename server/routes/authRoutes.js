@@ -2,14 +2,12 @@ const express = require('express');
 const {
 	sigupController,
 	loginController,
-	testController,
 	forgotPasswordController,
 	updateProfileController,
 	getOrdersController,
 	getAllOrdersController,
 	orderStatusController,
 	getAllUsersController,
-	userRoleController,
 } = require('../controllers/authController');
 const { requireSignIn, isAdmin } = require('../middlewares/authMiddleware');
 
@@ -51,8 +49,5 @@ router.put('/order-status/:id', requireSignIn, isAdmin, orderStatusController);
 
 // all users
 router.get('/users', requireSignIn, isAdmin, getAllUsersController);
-
-// Test Route
-router.get('/test', requireSignIn, isAdmin, testController);
 
 module.exports = router;

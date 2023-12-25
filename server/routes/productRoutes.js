@@ -7,7 +7,6 @@ const {
 	productPhotoController,
 	deleteProductController,
 	updateProductController,
-	productFilterController,
 	productCountController,
 	productListController,
 	searchProductController,
@@ -47,9 +46,6 @@ router.get('/product-image/:pid', productPhotoController);
 
 //delete product
 router.delete('/delete-product/:pid', deleteProductController);
-
-// //filter product
-// router.post('/filter-product', productFilterController);
 
 //product count
 router.get('/product-count', productCountController);

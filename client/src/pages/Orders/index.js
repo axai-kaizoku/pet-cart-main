@@ -40,37 +40,6 @@ const Orders = () => {
 						<div className="order-history-section">
 							<h5>Order History</h5>
 							<div className="order-history-container">
-								{/* {orders?.length > 0 ? (
-									<>
-										{orders.map((item) => {
-											return (
-												<div
-													className="individual-order"
-													key={item._id}>
-													<div className="ordered-product">
-														<div className="ordered-product-img-name">
-															<img
-																src="//picsum.photo/100/100"
-																alt={item.name}
-															/>
-															<Link
-																id="link"
-																state="/profile/user/orders"
-																to={`/product/${item.slug}`}>
-																<h3>{item.name}</h3>
-															</Link>
-														</div>
-														<div className="ordered-product-price">
-															{item.price}
-														</div>
-													</div>
-												</div>
-											);
-										})}
-									</>
-								) : (
-									<h6 className="text-center mt-5">No Orders Found</h6>
-								)} */}
 								{orders?.map((o, i) => {
 									return (
 										<div className="border">

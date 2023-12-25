@@ -130,16 +130,6 @@ const loginController = async (req, res) => {
 	}
 };
 
-// get test
-const testController = (req, res) => {
-	try {
-		res.send({ message: 'Protected Route' });
-	} catch (error) {
-		console.log({ error });
-		res.send({ error });
-	}
-};
-
 // forgotPasswordController
 
 const forgotPasswordController = async (req, res) => {
@@ -279,7 +269,6 @@ const getAllUsersController = async (req, res) => {
 module.exports = {
 	sigupController,
 	loginController,
-	testController,
 	forgotPasswordController,
 	updateProfileController,
 	getOrdersController,

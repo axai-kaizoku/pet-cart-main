@@ -7,7 +7,6 @@
 	justify-content: space-evenly;
 	color: white;
 	padding-top: 1rem;
-	/* align-items: center; */
 }
 
 .footer-below {
@@ -15,7 +14,6 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	/* margin-bottom: 0.8rem; */
 	height: 4rem;
 }
 

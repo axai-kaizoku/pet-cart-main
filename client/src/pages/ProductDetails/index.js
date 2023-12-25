@@ -16,9 +16,6 @@ const ProductDetails = () => {
 	const params = useParams();
 	const [cart, setCart] = useCart();
 	const location = useLocation();
-	// const [open, setOpen] = useState(false);
-	// const handleOpen = () => setOpen(true);
-	// const handleClose = () => setOpen(false);
 	const [product, setProduct] = useState({});
 
 	// initial product

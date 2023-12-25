@@ -19,10 +19,8 @@ const Store = () => {
 	const [total, setTotal] = useState(0);
 	const [page, setPage] = useState(1);
 	const [loading, setLoading] = useState(false);
-	const [values, setValues] = useSearch();
+	const [values] = useSearch();
 	const categories = useCategory();
-	const searchedProducts = values?.results;
-	console.log(searchedProducts);
 
 	// get products
 	const getAllProducts = async () => {

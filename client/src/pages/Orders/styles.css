@@ -17,10 +17,6 @@
 .individual-order {
 	display: flex;
 	flex-direction: column;
-
-	/* height: fit-content;
-	background-color: lightpink;
-	border: 2px solid yellow; */
 }
 
 .individual-order h6 {

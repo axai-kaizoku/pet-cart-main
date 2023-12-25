@@ -1,7 +1,6 @@
 .cart {
 	width: 100%;
 	height: fit-content;
-	/* margin: 0.8rem; */
 }
 
 .cart-container {
@@ -12,7 +11,6 @@
 
 .cart-left {
 	width: 73%;
-	/* border: 1px solid black; */
 	padding-bottom: 0.8rem;
 }
 
@@ -32,7 +30,6 @@
 
 #continue-shopping {
 	text-decoration: none;
-	/* border: 1px solid black; */
 	padding: 0.3rem;
 	border-radius: 0.4rem;
 	margin: 2rem;
@@ -40,7 +37,6 @@
 
 .cart-right {
 	width: 25%;
-	/* border: 1px solid black; */
 }
 
 .summary {

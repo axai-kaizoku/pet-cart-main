@@ -29,26 +29,6 @@ const CartSingleItem = ({ item, handleRemove }) => {
 					</button>
 				</div>
 			</div>
-			{/* <div className="quantity">
-				<div
-					onClick={(e) => {
-						e.preventDefault();
-						setNum(num - 1);
-					}}>
-					-
-				</div>
-				<input
-					type="text"
-					value={num}
-				/>
-				<div
-					onClick={(e) => {
-						e.preventDefault();
-						setNum(num + 1);
-					}}>
-					+
-				</div>
-			</div> */}
 			<span className="price">${item.price}</span>
 		</div>
 	);

@@ -9,7 +9,6 @@
 .cart-single-item .product-details {
 	display: flex;
 	flex-direction: row;
-	/* border: 1px solid red; */
 	gap: 3.6rem;
 }
 
@@ -45,7 +44,6 @@
 	display: flex;
 	flex-direction: row;
 	margin: 1rem;
-	/* border: 1px solid black; */
 	margin-right: 9rem;
 	align-items: center;
 }
@@ -69,15 +67,11 @@
 
 .cart-single-item .price {
 	margin: 1.6rem;
-	/* margin-bottom: 1rem; */
 	display: flex;
-	/* padding: 0.4rem; */
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	width: fit-content;
-	/* height: fit-content; */
-	/* border: 1px solid black; */
 }
 
 @media screen and (max-width: 550px) {

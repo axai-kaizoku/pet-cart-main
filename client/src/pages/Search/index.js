@@ -17,9 +17,11 @@ const Search = () => {
 				<div className="text-center">
 					<h1>Search Resuts</h1>
 					<h6>
-						{values?.results.length < 1
-							? 'No Products Found'
-							: `Found ${values?.results.length}`}
+						{values?.results.length < 1 ? (
+							'No Products Found'
+						) : (
+							<div className="mb-3">{`Found ${values?.results.length}`}</div>
+						)}
 					</h6>
 					<div className="product-list-inner">
 						{values?.results.map((item) => (

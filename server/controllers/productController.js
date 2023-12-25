@@ -190,28 +190,6 @@ const updateProductController = async (req, res) => {
 	}
 };
 
-// const productFilterController = async (req, res) => {
-// 	try {
-// 		const { checked } = req.body;
-// 		console.log(checked);
-// 		const id = checked[0];
-// 		console.log(id);
-// 		const products = await productModel.find({ category: id });
-
-// 		res.status(200).send({
-// 			success: true,
-// 			products,
-// 		});
-// 	} catch (error) {
-// 		console.log(error);
-// 		res.status(400).send({
-// 			success: false,
-// 			message: 'Error while filtering products!',
-// 			error,
-// 		});
-// 	}
-// };
-
 const productCountController = async (req, res) => {
 	try {
 		const total = await productModel.find({}).estimatedDocumentCount();
@@ -348,7 +326,6 @@ module.exports = {
 	productPhotoController,
 	deleteProductController,
 	updateProductController,
-	// productFilterController,
 	productCountController,
 	productListController,
 	searchProductController,
