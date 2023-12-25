@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './styles.css';
 import { Helmet } from 'react-helmet';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -24,7 +24,9 @@ const Layout = ({ children, title = '' }) => {
 				<title>PetCart</title>
 			</Helmet>
 			<Header />
-			<main style={{ minHeight: '100vh' }}>
+			<main
+				id="layout-background"
+				style={{ minHeight: '100vh' }}>
 				<Toaster />
 				{children}
 			</main>

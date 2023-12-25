@@ -71,7 +71,7 @@ const Profile = () => {
 						<UserMenu />
 					</div>
 					<div className="col-md-9">
-						<div className="update-container">
+						<div className="signup-container">
 							<h1>Update Profile</h1>
 							<form onSubmit={handleSubmit}>
 								<>

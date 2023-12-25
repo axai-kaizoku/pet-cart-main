@@ -48,12 +48,18 @@
 		flex-direction: column-reverse;
 		margin-top: 20rem;
 		margin-left: 0rem;
+		width: 100%;
+	}
+
+	.banner-img {
+		margin: 0rem;
+		/* width: 10rem; */
 	}
 
 	.banner-img img {
-		width: 100%;
-		margin-left: 0rem;
-		padding: 2rem;
+		width: 90%;
+		margin: 0rem;
+		padding: 1rem;
 		margin-top: 8rem;
 	}
 
