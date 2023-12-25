@@ -50,6 +50,10 @@
 	align-items: center;
 }
 
+#remove-from-cart-btn {
+	background-color: aliceblue;
+}
+
 .cart-single-item .quantity div {
 	margin: 0.2rem;
 	font-size: 1.5rem;

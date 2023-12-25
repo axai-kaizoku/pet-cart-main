@@ -22,7 +22,11 @@ const CartSingleItem = ({ item, handleRemove }) => {
 							{item.name}
 						</Link>
 					</span>
-					<button onClick={() => handleRemove(item._id)}>Remove</button>
+					<button
+						id="remove-from-cart-btn"
+						onClick={() => handleRemove(item._id)}>
+						Remove
+					</button>
 				</div>
 			</div>
 			{/* <div className="quantity">
