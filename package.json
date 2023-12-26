@@ -5,9 +5,10 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "cd server && node server.js",
+		"install": "cd server && npm i && cd ../client && npm i",
 		"dev": "concurrently \"cd server && npm run start\" \"cd client && npm start\""
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "MIT"
 }

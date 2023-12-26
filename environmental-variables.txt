@@ -1,0 +1,6 @@
+PORT= your port
+mongoDBURI= your mongodb uri
+jwtSecretKey= your secret key
+BrainTreeMerchantId = your id
+BrainTreePublicKey = your key
+BrainTreePrivateKey = your key
